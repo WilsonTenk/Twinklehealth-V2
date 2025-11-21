@@ -90,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, onSearch }) =>
                             onClick={() => onNavigate('Home')}
                         >
                             <img 
-                                src="/logo.png" 
+                                src="logo.png" 
                                 alt="Twinkle Health Foundation" 
                                 className="h-12 w-auto object-contain transform group-hover:scale-105 transition-transform"
                             />

@@ -9,26 +9,26 @@ const team: TeamMember[] = [
         id: 1,
         name: "Dr. Sarah Mensah",
         role: "Founder & CEO",
-        image: "/images/PHOTO-2025-04-14-17-02-59.jpg",
+        image: "images/PHOTO-2025-04-14-17-02-59.jpg",
         bio: "Dr. Mensah founded Twinkle Health with a vision to eliminate healthcare disparities in Ghana."
     },
     {
         id: 2,
         name: "Kwame Asante",
         role: "Director of Operations",
-        image: "/images/PHOTO-2025-04-14-17-03-00.jpg",
+        image: "images/PHOTO-2025-04-14-17-03-00.jpg",
     },
     {
         id: 3,
         name: "Ama Serwaa",
         role: "Community Outreach Lead",
-        image: "/images/PHOTO-2025-04-14-16-34-55 (2).jpg",
+        image: "images/PHOTO-2025-04-14-16-34-55 (2).jpg",
     },
     {
         id: 4,
         name: "John Doe",
         role: "Medical Coordinator",
-        image: "/images/PHOTO-2025-04-14-16-34-56 (2).jpg",
+        image: "images/PHOTO-2025-04-14-16-34-56 (2).jpg",
     }
 ];
 
@@ -38,7 +38,7 @@ const About: React.FC = () => {
             {/* Page Header */}
             <div className="bg-primary-900 py-24 text-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
-                    <img src="/images/PHOTO-2025-04-14-17-02-56.jpg" alt="Header BG" className="w-full h-full object-cover" />
+                    <img src="images/PHOTO-2025-04-14-17-02-56.jpg" alt="Header BG" className="w-full h-full object-cover" />
                 </div>
                 <div className="container mx-auto px-4 relative z-10">
                     <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">About Us</h1>
@@ -75,7 +75,7 @@ const About: React.FC = () => {
                             </div>
                         </div>
                         <div className="relative">
-                            <img src="/images/PHOTO-2025-04-14-17-02-57.jpg" alt="Our Work" className="rounded-2xl shadow-2xl w-full h-full object-cover" />
+                            <img src="images/PHOTO-2025-04-14-17-02-57.jpg" alt="Our Work" className="rounded-2xl shadow-2xl w-full h-full object-cover" />
                             <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-8 rounded-b-2xl">
                                 <p className="text-white italic text-lg">"Healthcare is not just about medicine; it's about dignity and hope."</p>
                             </div>
@@ -135,7 +135,7 @@ const About: React.FC = () => {
                                 </div>
                             </div>
                             <div className="h-full min-h-[400px]">
-                                <img src="/images/PHOTO-2025-04-14-17-02-58.jpg" alt="Founder" className="w-full h-full object-cover" />
+                                <img src="images/PHOTO-2025-04-14-17-02-58.jpg" alt="Founder" className="w-full h-full object-cover" />
                             </div>
                         </div>
                     </div>

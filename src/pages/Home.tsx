@@ -18,21 +18,21 @@ const testimonials: Testimonial[] = [
         text: "The health education drama was transformative for our village. We finally understand how to prevent common illnesses in a way that makes sense to us.",
         name: "Adwoa Mansa",
         role: "Community Leader",
-        image: "/images/PHOTO-2025-04-14-16-34-59 (2).jpg"
+        image: "images/PHOTO-2025-04-14-16-34-59 (2).jpg"
     },
     {
         id: 2,
         text: "I've seen many NGOs come and go, but Twinkle Health stays. They listen to what we actually need before acting. Their impact is real.",
         name: "Kwame Osei",
         role: "Headmaster, Local School",
-        image: "/images/PHOTO-2025-04-14-16-34-59 (3).jpg"
+        image: "images/PHOTO-2025-04-14-16-34-59 (3).jpg"
     },
     {
         id: 3,
         text: "Providing free surgeries for our children has given them a second chance at life. We are forever grateful for the medical team's dedication.",
         name: "Grace Antwi",
         role: "Mother",
-        image: "/images/PHOTO-2025-04-14-16-35-00 (2).jpg"
+        image: "images/PHOTO-2025-04-14-16-35-00 (2).jpg"
     }
 ];
 
@@ -127,9 +127,9 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
                                 <div className="flex items-center space-x-4 bg-white p-3 rounded-xl shadow-sm border border-gray-100">
                                     <div className="flex -space-x-3">
                                         {[
-                                            "/images/PHOTO-2025-04-14-16-35-00 (3).jpg",
-                                            "/images/PHOTO-2025-04-14-16-35-01 (2).jpg",
-                                            "/images/PHOTO-2025-04-14-17-02-55 (2).jpg"
+                                            "images/PHOTO-2025-04-14-16-35-00 (3).jpg",
+                                            "images/PHOTO-2025-04-14-16-35-01 (2).jpg",
+                                            "images/PHOTO-2025-04-14-17-02-55 (2).jpg"
                                         ].map((imgSrc, i) => (
                                             <img key={i} src={imgSrc} className="w-10 h-10 rounded-full border-2 border-white" alt="User" />
                                         ))}
@@ -146,7 +146,7 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
 
                         <div className="relative animate-fade-in" style={{animationDelay: '0.2s'}}>
                             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white z-10 transform hover:rotate-1 transition-transform duration-500">
-                                <img src="/images/PHOTO-2025-04-14-16-34-57 (3).jpg" alt="Healthcare worker" className="w-full h-auto" />
+                                <img src="images/PHOTO-2025-04-14-16-34-57 (3).jpg" alt="Healthcare worker" className="w-full h-auto" />
                                 <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md p-5 rounded-xl shadow-lg max-w-xs border-l-4 border-accent-500">
                                     <div className="flex items-center space-x-3 mb-2">
                                         <div className="bg-green-100 p-2 rounded-full text-green-600">
@@ -176,7 +176,7 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
                         <div className="grid lg:grid-cols-2 gap-16 items-center">
                             <div className="relative order-2 lg:order-1">
                                 <img 
-                                    src="/images/PHOTO-2025-04-14-16-34-58 (3).jpg" 
+                                    src="images/PHOTO-2025-04-14-16-34-58 (3).jpg" 
                                     alt="About Us" 
                                     className="rounded-tr-[100px] rounded-bl-[100px] rounded-tl-3xl rounded-br-3xl shadow-2xl w-full object-cover h-[600px]" 
                                 />

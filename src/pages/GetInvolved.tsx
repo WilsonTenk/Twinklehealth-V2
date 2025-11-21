@@ -43,7 +43,7 @@ const GetInvolved: React.FC = () => {
         <div className="animate-fade-in">
             <div className="bg-primary-900 py-20 text-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
-                    <img src="/images/PHOTO-2025-04-14-16-34-57 (3).jpg" alt="Header BG" className="w-full h-full object-cover" />
+                    <img src="images/PHOTO-2025-04-14-16-34-57 (3).jpg" alt="Header BG" className="w-full h-full object-cover" />
                 </div>
                 <div className="container mx-auto px-4 relative z-10">
                     <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Get Involved</h1>

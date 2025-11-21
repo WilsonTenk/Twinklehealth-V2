@@ -15,7 +15,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     <div className="space-y-6">
                          <div className="inline-block cursor-pointer bg-white p-2 rounded-lg" onClick={() => onNavigate('Home')}>
                             <img 
-                                src="/logo.png" 
+                                src="logo.png" 
                                 alt="Twinkle Health Foundation" 
                                 className="h-10 w-auto object-contain"
                             />
