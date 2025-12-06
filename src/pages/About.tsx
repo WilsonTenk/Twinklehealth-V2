@@ -161,31 +161,42 @@ const About: React.FC = () => {
                 </div>
             </section>
 
-            {/* Team Section */}
-            <section className="py-24 bg-gray-50 dark:bg-gray-800">
-                <div className="container mx-auto px-4">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
+            {/* Team Section (Infinite Slider) */}
+            <section className="py-24 bg-gray-50 dark:bg-gray-800 transition-colors duration-300 overflow-hidden">
+                <div className="container mx-auto px-4 mb-16">
+                    <div className="text-center max-w-3xl mx-auto">
                         <SectionTitle 
                             subtitle="Our Team"
                             title="Meet The Change Makers"
                             alignment="center"
                         />
                     </div>
-                    <div className="overflow-hidden">
-                        <div className="flex animate-marquee gap-8">
-                            {[...team, ...team, ...team].map((member, index) => (
-                                <div key={`${member.id}-${index}`} className="flex-shrink-0 w-72 bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group">
-                                    <div className="overflow-hidden h-80 relative">
-                                        <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
-                                    </div>
-                                    <div className="p-6 text-center">
-                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{member.name}</h3>
-                                        <p className="text-primary-600 dark:text-primary-400 font-medium">{member.role}</p>
-                                    </div>
+                </div>
+                {/* Marquee Container */}
+                <div className="relative w-full overflow-hidden py-4">
+                    {/* 
+                       Gradient overlays to fade edges 
+                    */}
+                    <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 dark:from-gray-800 to-transparent z-10 pointer-events-none"></div>
+                    <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 dark:from-gray-800 to-transparent z-10 pointer-events-none"></div>
+                    {/* 
+                       We duplicate the team array 4 times. 
+                       The animation moves -50% (halfway), which brings the second half 
+                       to the start position, creating an invisible loop point.
+                    */}
+                    <div className="flex animate-marquee w-max hover:[animation-play-state:paused]">
+                        {[...team, ...team, ...team, ...team].map((member, index) => (
+                            <div key={`${member.id}-${index}`} className="w-[280px] mx-5 bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex-shrink-0 border border-gray-100 dark:border-gray-600">
+                                <div className="overflow-hidden h-80 relative">
+                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
                                 </div>
-                            ))}
-                        </div>
+                                <div className="p-6 text-center">
+                                    <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-tight mb-2">{member.name}</h3>
+                                    <p className="text-primary-600 dark:text-primary-400 font-medium text-sm uppercase tracking-wider">{member.role}</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
