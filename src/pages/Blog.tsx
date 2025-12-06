@@ -25,7 +25,7 @@ const Blog: React.FC<BlogPageProps> = ({ blogPosts, onNavigate }) => {
                 </div>
             </div>
 
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-white dark:bg-gray-900">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {allPosts.map((post, index) => (
@@ -36,7 +36,7 @@ const Blog: React.FC<BlogPageProps> = ({ blogPosts, onNavigate }) => {
                     </div>
 
                     <div className="mt-16 text-center">
-                        <button className="border-2 border-gray-200 text-gray-600 hover:border-primary-600 hover:text-primary-600 px-8 py-3 rounded-full font-bold transition-all">
+                        <button className="border-2 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-primary-600 dark:hover:border-primary-400 hover:text-primary-600 dark:hover:text-primary-400 px-8 py-3 rounded-full font-bold transition-all">
                             Load More Stories
                         </button>
                     </div>

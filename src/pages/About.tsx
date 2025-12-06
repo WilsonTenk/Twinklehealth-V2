@@ -20,14 +20,26 @@ const team: TeamMember[] = [
     },
     {
         id: 3,
-        name: "Austin Quaye & George Djisam",
-        role: "Community Outreach Leads",
+        name: "Austin Quaye",
+        role: "Community Outreach Lead",
         image: "images/PHOTO-2025-04-14-16-34-55 (2).jpg",
     },
     {
         id: 4,
-        name: "Elinam Komla Ansawoe & Victor Kofi Norgbedzi",
-        role: "Medical Coordinators",
+        name: "George Djisam",
+        role: "Community Outreach Lead",
+        image: "images/PHOTO-2025-04-14-16-34-55 (2).jpg",
+    },
+    {
+        id: 5,
+        name: "Elinam Komla Ansawoe",
+        role: "Medical Coordinator",
+        image: "images/PHOTO-2025-04-14-16-34-56 (2).jpg",
+    },
+    {
+        id: 6,
+        name: "Victor Kofi Norgbedzi",
+        role: "Medical Coordinator",
         image: "images/PHOTO-2025-04-14-16-34-56 (2).jpg",
     }
 ];
@@ -47,7 +59,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Main Content */}
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-white dark:bg-gray-900">
                 <div className="container mx-auto px-4">
                     <div className="grid lg:grid-cols-2 gap-16">
                         <div>
@@ -56,24 +68,24 @@ const About: React.FC = () => {
                                 title="Bridging the Healthcare Gap Since 2018"
                                 description="Twinkle Health Foundation was born out of a simple yet powerful realization: geography should not determine one's right to live a healthy life."
                             />
-                            <p className="text-gray-600 mb-6 leading-relaxed">
+                            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                                 Founded in Accra, Ghana, we started as a small group of medical volunteers visiting remote communities. Today, we have grown into a full-fledged NGO affecting thousands of lives annually.
                             </p>
-                            <p className="text-gray-600 mb-6 leading-relaxed">
-                                Health education can go beyond health talks; drama and arts can also be an innovative tool to educate communities on their health needs.
+                            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                Health education can go beyond health talks, drama and arts can also be an innovative tool to educate communities on their health needs.
                             </p>
-                            <p className="text-gray-600 mb-8 leading-relaxed">
+                            <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                                 We focus on holistic health - treating the body, educating the mind through our drama programs, and empowering the community economically. We believe sustainability is key to lasting change.
                             </p>
 
                             <div className="grid grid-cols-2 gap-6">
-                                <div className="p-6 bg-primary-50 rounded-xl border border-primary-100">
-                                    <h3 className="text-3xl font-bold text-primary-600 mb-2">10</h3>
-                                    <p className="text-gray-700 font-medium">Communities Served</p>
+                                <div className="p-6 bg-primary-50 dark:bg-primary-900/30 rounded-xl border border-primary-100 dark:border-primary-800">
+                                    <h3 className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">10</h3>
+                                    <p className="text-gray-700 dark:text-gray-300 font-medium">Communities Served</p>
                                 </div>
-                                <div className="p-6 bg-accent-50 rounded-xl border border-accent-100">
-                                    <h3 className="text-3xl font-bold text-accent-600 mb-2">3,378</h3>
-                                    <p className="text-gray-700 font-medium">Lives Impacted</p>
+                                <div className="p-6 bg-accent-50 dark:bg-accent-900/30 rounded-xl border border-accent-100 dark:border-accent-800">
+                                    <h3 className="text-3xl font-bold text-accent-600 dark:text-accent-400 mb-2">3,378</h3>
+                                    <p className="text-gray-700 dark:text-gray-300 font-medium">Lives Impacted</p>
                                 </div>
                             </div>
                         </div>
@@ -88,29 +100,29 @@ const About: React.FC = () => {
             </section>
 
             {/* Mission Vision Values */}
-            <section className="py-24 bg-gray-50">
+            <section className="py-24 bg-gray-50 dark:bg-gray-800">
                 <div className="container mx-auto px-4">
                     <div className="grid md:grid-cols-3 gap-8">
-                        <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:-translate-y-2 transition-transform">
-                            <div className="w-14 h-14 bg-primary-100 rounded-full flex items-center justify-center text-primary-600 mb-6">
+                        <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 hover:-translate-y-2 transition-transform">
+                            <div className="w-14 h-14 bg-primary-100 dark:bg-primary-900/50 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-400 mb-6">
                                 <Globe size={28} />
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">Our Mission</h3>
-                            <p className="text-gray-600">To provide accessible healthcare, education, and sustainable livelihood opportunities to underserved communities across Ghana.</p>
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Our Mission</h3>
+                            <p className="text-gray-600 dark:text-gray-300">To provide accessible healthcare, education, and sustainable livelihood opportunities to underserved communities across Ghana.</p>
                         </div>
-                        <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:-translate-y-2 transition-transform">
-                            <div className="w-14 h-14 bg-accent-100 rounded-full flex items-center justify-center text-accent-600 mb-6">
+                        <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 hover:-translate-y-2 transition-transform">
+                            <div className="w-14 h-14 bg-accent-100 dark:bg-accent-900/50 rounded-full flex items-center justify-center text-accent-600 dark:text-accent-400 mb-6">
                                 <Heart size={28} />
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">Our Vision</h3>
-                            <p className="text-gray-600">A world where quality healthcare and economic stability are accessible to everyone, regardless of their location or status.</p>
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Our Vision</h3>
+                            <p className="text-gray-600 dark:text-gray-300">A world where quality healthcare and economic stability are accessible to everyone, regardless of their location or status.</p>
                         </div>
-                        <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:-translate-y-2 transition-transform">
-                            <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-6">
+                        <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 hover:-translate-y-2 transition-transform">
+                            <div className="w-14 h-14 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 mb-6">
                                 <Award size={28} />
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">Our Values</h3>
-                            <ul className="space-y-2 text-gray-600">
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Our Values</h3>
+                            <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                                 <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Compassion</li>
                                 <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Accessibility</li>
                                 <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Innovation</li>
@@ -126,7 +138,7 @@ const About: React.FC = () => {
             </section>
 
             {/* Founder's Message */}
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-white dark:bg-gray-900">
                 <div className="container mx-auto px-4">
                     <div className="bg-primary-900 rounded-3xl overflow-hidden shadow-2xl">
                         <div className="grid md:grid-cols-2 items-center">
@@ -150,7 +162,7 @@ const About: React.FC = () => {
             </section>
 
             {/* Team Section */}
-            <section className="py-24 bg-gray-50">
+            <section className="py-24 bg-gray-50 dark:bg-gray-800">
                 <div className="container mx-auto px-4">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <SectionTitle 
@@ -159,19 +171,21 @@ const About: React.FC = () => {
                             alignment="center"
                         />
                     </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {team.map(member => (
-                            <div key={member.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group">
-                                <div className="overflow-hidden h-80 relative">
-                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                    <div className="overflow-hidden">
+                        <div className="flex animate-marquee gap-8">
+                            {[...team, ...team, ...team].map((member, index) => (
+                                <div key={`${member.id}-${index}`} className="flex-shrink-0 w-72 bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group">
+                                    <div className="overflow-hidden h-80 relative">
+                                        <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                                    </div>
+                                    <div className="p-6 text-center">
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{member.name}</h3>
+                                        <p className="text-primary-600 dark:text-primary-400 font-medium">{member.role}</p>
+                                    </div>
                                 </div>
-                                <div className="p-6 text-center">
-                                    <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                                    <p className="text-primary-600 font-medium">{member.role}</p>
-                                </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>

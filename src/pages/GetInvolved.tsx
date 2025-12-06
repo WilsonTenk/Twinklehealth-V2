@@ -51,39 +51,39 @@ const GetInvolved: React.FC = () => {
                 </div>
             </div>
 
-            <section className="py-16 bg-gray-50">
+            <section className="py-16 bg-gray-50 dark:bg-gray-800">
                 <div className="container mx-auto px-4">
                     {/* Tabs */}
                     <div className="flex flex-wrap justify-center gap-4 mb-12">
                         <button 
                             onClick={() => setActiveTab('volunteer')}
-                            className={`px-8 py-4 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm ${activeTab === 'volunteer' ? 'bg-primary-600 text-white shadow-lg scale-105' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+                            className={`px-8 py-4 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm ${activeTab === 'volunteer' ? 'bg-primary-600 text-white shadow-lg scale-105' : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
                         >
                             <UserPlus size={20} />
                             <span>Volunteer</span>
                         </button>
                         <button 
                             onClick={() => setActiveTab('partner')}
-                            className={`px-8 py-4 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm ${activeTab === 'partner' ? 'bg-primary-600 text-white shadow-lg scale-105' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+                            className={`px-8 py-4 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm ${activeTab === 'partner' ? 'bg-primary-600 text-white shadow-lg scale-105' : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
                         >
                             <HandHeart size={20} />
                             <span>Partner</span>
                         </button>
                         <button 
                             onClick={() => setActiveTab('donate')}
-                            className={`px-8 py-4 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm ${activeTab === 'donate' ? 'bg-accent-500 text-white shadow-lg scale-105' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+                            className={`px-8 py-4 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm ${activeTab === 'donate' ? 'bg-accent-500 text-white shadow-lg scale-105' : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
                         >
                             <Heart size={20} />
                             <span>Donate</span>
                         </button>
                     </div>
 
-                    <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                    <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700">
                         {activeTab === 'volunteer' && (
                             <div className="p-8 md:p-12">
                                 <div className="text-center mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900">Become a Volunteer</h2>
-                                    <p className="text-gray-600">Join our team on the ground. We need medical professionals, educators, and general support.</p>
+                                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Become a Volunteer</h2>
+                                    <p className="text-gray-600 dark:text-gray-300">Join our team on the ground. We need medical professionals, educators, and general support.</p>
                                 </div>
                                 {formSubmitted ? (
                                     <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center text-green-800">
@@ -95,22 +95,22 @@ const GetInvolved: React.FC = () => {
                                     <form onSubmit={handleFormSubmit} className="space-y-6">
                                         <div className="grid md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
-                                                <label className="text-sm font-bold text-gray-700">Full Name</label>
-                                                <input required type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="John Doe" />
+                                                <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Full Name</label>
+                                                <input required type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="John Doe" />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-sm font-bold text-gray-700">Email Address</label>
-                                                <input required type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="john@example.com" />
+                                                <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Email Address</label>
+                                                <input required type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="john@example.com" />
                                             </div>
                                         </div>
                                         <div className="grid md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
-                                                <label className="text-sm font-bold text-gray-700">Phone Number</label>
-                                                <input required type="tel" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="+233 XX XXX XXXX" />
+                                                <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Phone Number</label>
+                                                <input required type="tel" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="+233 XX XXX XXXX" />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-sm font-bold text-gray-700">Area of Interest</label>
-                                                <select className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all">
+                                                <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Area of Interest</label>
+                                                <select className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white">
                                                     <option>Medical Team</option>
                                                     <option>Health Education / Drama</option>
                                                     <option>Logistics & Support</option>
@@ -119,8 +119,8 @@ const GetInvolved: React.FC = () => {
                                             </div>
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-sm font-bold text-gray-700">Why do you want to join us?</label>
-                                            <textarea rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"></textarea>
+                                            <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Why do you want to join us?</label>
+                                            <textarea rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"></textarea>
                                         </div>
                                         <button type="submit" className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 rounded-xl transition-colors shadow-lg">
                                             Submit Application
@@ -133,8 +133,8 @@ const GetInvolved: React.FC = () => {
                         {activeTab === 'partner' && (
                             <div className="p-8 md:p-12">
                                 <div className="text-center mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900">Partner With Us</h2>
-                                    <p className="text-gray-600">Collaborate with us to expand our impact. Corporations, NGOs, and institutions welcome.</p>
+                                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Partner With Us</h2>
+                                    <p className="text-gray-600 dark:text-gray-300">Collaborate with us to expand our impact. Corporations, NGOs, and institutions welcome.</p>
                                 </div>
                                 {formSubmitted ? (
                                     <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center text-green-800">
@@ -145,22 +145,22 @@ const GetInvolved: React.FC = () => {
                                 ) : (
                                     <form onSubmit={handleFormSubmit} className="space-y-6">
                                         <div className="space-y-2">
-                                            <label className="text-sm font-bold text-gray-700">Organization Name</label>
-                                            <input required type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all" />
+                                            <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Organization Name</label>
+                                            <input required type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" />
                                         </div>
                                         <div className="grid md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
-                                                <label className="text-sm font-bold text-gray-700">Contact Person</label>
-                                                <input required type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all" />
+                                                <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Contact Person</label>
+                                                <input required type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-sm font-bold text-gray-700">Email Address</label>
-                                                <input required type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all" />
+                                                <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Email Address</label>
+                                                <input required type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" />
                                             </div>
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-sm font-bold text-gray-700">Partnership Proposal / Message</label>
-                                            <textarea rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"></textarea>
+                                            <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Partnership Proposal / Message</label>
+                                            <textarea rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"></textarea>
                                         </div>
                                         <button type="submit" className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 rounded-xl transition-colors shadow-lg">
                                             Send Proposal
@@ -173,8 +173,8 @@ const GetInvolved: React.FC = () => {
                         {activeTab === 'donate' && (
                             <div className="p-8 md:p-12">
                                 <div className="text-center mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900">Make a Donation</h2>
-                                    <p className="text-gray-600">Secure payments via Paystack. Your contribution saves lives.</p>
+                                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Make a Donation</h2>
+                                    <p className="text-gray-600 dark:text-gray-300">Secure payments via Paystack. Your contribution saves lives.</p>
                                 </div>
                                 
                                 <form onSubmit={handleDonation} className="max-w-md mx-auto space-y-8">
@@ -184,7 +184,7 @@ const GetInvolved: React.FC = () => {
                                                 key={amt}
                                                 type="button"
                                                 onClick={() => { setDonationAmount(amt); setCustomAmount(''); }}
-                                                className={`py-3 rounded-xl border font-bold transition-all ${donationAmount === amt && !customAmount ? 'bg-accent-500 text-white border-accent-500' : 'bg-white text-gray-600 border-gray-200 hover:border-accent-500'}`}
+                                                className={`py-3 rounded-xl border font-bold transition-all ${donationAmount === amt && !customAmount ? 'bg-accent-500 text-white border-accent-500' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-accent-500 dark:hover:border-accent-400'}`}
                                             >
                                                 GHS {amt}
                                             </button>
@@ -195,15 +195,15 @@ const GetInvolved: React.FC = () => {
                                                 placeholder="Custom"
                                                 value={customAmount}
                                                 onChange={(e) => setCustomAmount(e.target.value)}
-                                                className={`w-full h-full px-2 text-center rounded-xl border font-bold outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-200 ${customAmount ? 'border-accent-500 bg-accent-50' : 'border-gray-200'}`}
+                                                className={`w-full h-full px-2 text-center rounded-xl border font-bold outline-none focus:border-accent-500 dark:focus:border-accent-400 focus:ring-2 focus:ring-accent-200 dark:focus:ring-accent-800 ${customAmount ? 'border-accent-500 dark:border-accent-400 bg-accent-50 dark:bg-accent-900/30' : 'border-gray-200 dark:border-gray-700'} text-gray-900 dark:text-white bg-white dark:bg-gray-800`}
                                             />
                                         </div>
                                     </div>
 
                                     <div className="space-y-4">
                                         <div className="space-y-2">
-                                            <label className="text-sm font-bold text-gray-700">Email Address (for receipt)</label>
-                                            <input required type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-accent-500 focus:ring-2 focus:ring-accent-200 outline-none transition-all" placeholder="you@example.com" />
+                                            <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Email Address (for receipt)</label>
+                                            <input required type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-accent-500 dark:focus:border-accent-400 focus:ring-2 focus:ring-accent-200 dark:focus:ring-accent-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="you@example.com" />
                                         </div>
                                     </div>
 

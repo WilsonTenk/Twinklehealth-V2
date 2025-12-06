@@ -48,8 +48,7 @@ const services: Service[] = [
         tag: "Healthcare",
         features: [
             "General Consultation",
-            "Eye Screening",
-            "ENT Screening",
+            "Eye & ENT Screening",
             "Child Welfare Clinic",
             "Laboratory Tests"
         ],
@@ -69,8 +68,7 @@ const services: Service[] = [
         features: [
             "Educational Project Donations",
             "Wheelchair Donations",
-            "Medical Consumables for CHPS",
-            "Targeted Support"
+            "Medical Consumables"
         ],
         impactStats: [
             { value: "N/A", label: "Educational Items Donated" },
@@ -81,8 +79,8 @@ const services: Service[] = [
     {
         id: 4,
         title: "Livelihood Empowerment",
-        description: "Empowering both men and women. We provide training in bead making and soap making. We also donated a sewing machine through a collaboration. Note: We provide literacy on sustainable financial management instead of micro-grants.",
-        fullDescription: "Empowering both men and women. We provide training in bead making and soap making. We also donated a sewing machine through a collaboration. Note: We provide literacy on sustainable financial management instead of micro-grants. Poverty is a major determinant of health. Our Livelihood Empowerment program focuses on equipping women and youth with vocational skills such as soap making, bead work, and sustainable farming techniques. We also provide financial literacy training to help them start small businesses, ensuring they can afford nutritious food and healthcare for their families.",
+        description: "Empowering both men and women. We provide training in bead making and soap making. We also donate equipment (like sewing machines) and provide literacy on sustainable financial management.",
+        fullDescription: "Empowering both men and women. We provide training in bead making and soap making. We also donate equipment (like sewing machines) and provide literacy on sustainable financial management. Poverty is a major determinant of health. Our Livelihood Empowerment program focuses on equipping women and youth with vocational skills such as soap making, bead work, and sustainable farming techniques. We also provide financial literacy training to help them start small businesses, ensuring they can afford nutritious food and healthcare for their families.",
         icon: Sprout,
         image: "images/PHOTO-2025-04-14-16-34-57.jpg",
         tag: "Empowerment",

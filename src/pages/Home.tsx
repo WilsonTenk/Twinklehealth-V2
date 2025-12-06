@@ -61,15 +61,15 @@ const faqs: FaqItem[] = [
 
 const AccordionItem: React.FC<{ item: FaqItem; isOpen: boolean; onToggle: () => void }> = ({ item, isOpen, onToggle }) => {
     return (
-        <div className={`mb-4 border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 ${isOpen ? 'bg-white shadow-lg border-primary-100' : 'bg-white hover:bg-gray-50'}`}>
+        <div className={`mb-4 border border-gray-100 dark:border-gray-700 rounded-2xl overflow-hidden transition-all duration-300 ${isOpen ? 'bg-white dark:bg-gray-900 shadow-lg border-primary-100 dark:border-primary-800' : 'bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800'}`}>
             <button 
                 onClick={onToggle}
                 className="w-full py-5 px-6 flex items-center justify-between text-left focus:outline-none group"
             >
-                <span className={`font-bold text-lg transition-colors ${isOpen ? 'text-primary-700' : 'text-gray-800 group-hover:text-primary-600'}`}>
+                <span className={`font-bold text-lg transition-colors ${isOpen ? 'text-primary-700 dark:text-primary-400' : 'text-gray-800 dark:text-gray-200 group-hover:text-primary-600 dark:group-hover:text-primary-400'}`}>
                     {item.question}
                 </span>
-                <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-primary-100 text-primary-600 rotate-180' : 'bg-gray-100 text-gray-400 group-hover:bg-primary-50 group-hover:text-primary-500'}`}>
+                <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400 rotate-180' : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 group-hover:bg-primary-50 dark:group-hover:bg-primary-900/30 group-hover:text-primary-500 dark:group-hover:text-primary-400'}`}>
                     <ChevronDown size={20} />
                 </div>
             </button>
@@ -77,7 +77,7 @@ const AccordionItem: React.FC<{ item: FaqItem; isOpen: boolean; onToggle: () => 
                 className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
             >
                 <div className="overflow-hidden">
-                    <div className="px-6 pb-6 pt-0 text-gray-600 leading-relaxed border-t border-dashed border-gray-100 mt-2 pt-4">
+                    <div className="px-6 pb-6 pt-0 text-gray-600 dark:text-gray-300 leading-relaxed border-t border-dashed border-gray-100 dark:border-gray-700 mt-2 pt-4">
                         {item.answer}
                     </div>
                 </div>
@@ -96,22 +96,22 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
     return (
         <div className="overflow-hidden">
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-br from-primary-50 to-white pt-10 pb-32 overflow-hidden">
+            <section className="relative bg-gradient-to-br from-primary-50 dark:from-primary-900/50 to-white dark:to-gray-900 pt-10 pb-32 overflow-hidden">
                 <div className="absolute top-0 right-0 w-1/3 h-full bg-primary-100/50 -skew-x-12 translate-x-20 z-0"></div>
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-100 rounded-full blur-3xl opacity-50 z-0"></div>
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-8 animate-fade-in">
-                            <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-sm border border-primary-100 text-primary-700 font-medium text-sm">
+                            <div className="inline-flex items-center space-x-2 bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-sm border border-primary-100 dark:border-primary-800 text-primary-700 dark:text-primary-400 font-medium text-sm">
                                 <Heart size={14} className="fill-current text-accent-500" />
                                 <span>Healthcare is an Act of A Soft Heart!</span>
                             </div>
-                            <h1 className="text-5xl lg:text-7xl font-heading font-bold text-gray-900 leading-tight">
+                            <h1 className="text-5xl lg:text-7xl font-heading font-bold text-gray-900 dark:text-white leading-tight">
                                 Together We <br/>
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-500">Create Change</span>
                             </h1>
-                            <p className="text-xl text-gray-600 max-w-lg leading-relaxed">
+                            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-lg leading-relaxed">
                                 We believe that every small act of healthcare can create a ripple of change. Join our mission to transform communities.
                             </p>
                             
@@ -124,7 +124,7 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
                                     <span>Make Donation</span>
                                 </button>
                                 
-                                <div className="flex items-center space-x-4 bg-white p-3 rounded-xl shadow-sm border border-gray-100">
+                                <div className="flex items-center space-x-4 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
                                     <div className="flex -space-x-3">
                                         {[
                                             "images/PHOTO-2025-04-14-16-35-00 (3).jpg",
@@ -137,7 +137,7 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
                                             200+
                                         </div>
                                     </div>
-                                    <div className="text-xs font-bold text-gray-500 leading-tight">
+                                    <div className="text-xs font-bold text-gray-500 dark:text-gray-400 leading-tight">
                                         Community Members <br/> Served
                                     </div>
                                 </div>
@@ -147,14 +147,14 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
                         <div className="relative animate-fade-in" style={{animationDelay: '0.2s'}}>
                             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white z-10 transform hover:rotate-1 transition-transform duration-500">
                                 <img src="images/PHOTO-2025-04-14-16-34-57 (3).jpg" alt="Healthcare worker" className="w-full h-auto" />
-                                <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md p-5 rounded-xl shadow-lg max-w-xs border-l-4 border-accent-500">
+                                <div className="absolute bottom-8 left-8 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md p-5 rounded-xl shadow-lg max-w-xs border-l-4 border-accent-500">
                                     <div className="flex items-center space-x-3 mb-2">
                                         <div className="bg-green-100 p-2 rounded-full text-green-600">
                                             <Check size={16} strokeWidth={3} />
                                         </div>
-                                        <span className="font-bold text-gray-900">Mission Success</span>
+                                        <span className="font-bold text-gray-900 dark:text-white">Mission Success</span>
                                     </div>
-                                    <p className="text-sm text-gray-600">Recent campaign helped 500+ children with basic vaccinations.</p>
+                                    <p className="text-sm text-gray-600 dark:text-gray-300">Recent campaign helped 500+ children with basic vaccinations.</p>
                                 </div>
                             </div>
                             <div className="absolute -top-10 -right-10 z-0 opacity-40">
@@ -171,7 +171,7 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
 
             {/* About Section Summary */}
             <ScrollReveal>
-                <section className="py-24 bg-white">
+                <section className="py-24 bg-white dark:bg-gray-900">
                     <div className="container mx-auto px-4">
                         <div className="grid lg:grid-cols-2 gap-16 items-center">
                             <div className="relative order-2 lg:order-1">
@@ -193,13 +193,13 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
                                     description="Twinkle Health Foundation is dedicated to transforming healthcare accessibility in underserved communities. We believe that quality healthcare is a fundamental right, not a privilege."
                                 />
 
-                                <div className="bg-primary-50 p-6 rounded-2xl border border-primary-100 mb-8 flex flex-col md:flex-row gap-6 items-center">
+                                <div className="bg-primary-50 dark:bg-primary-900/30 p-6 rounded-2xl border border-primary-100 dark:border-primary-800 mb-8 flex flex-col md:flex-row gap-6 items-center">
                                     <div className="flex-1">
                                         <div className="flex items-center space-x-3 mb-4">
-                                            <div className="bg-white p-2 rounded-full shadow-sm text-primary-600">
+                                            <div className="bg-white dark:bg-gray-800 p-2 rounded-full shadow-sm text-primary-600 dark:text-primary-400">
                                                 <Heart size={20} />
                                             </div>
-                                            <h3 className="font-bold text-gray-900 text-lg">Our Core Missions</h3>
+                                            <h3 className="font-bold text-gray-900 dark:text-white text-lg">Our Core Missions</h3>
                                         </div>
                                         <ul className="space-y-3">
                                             {[
@@ -208,7 +208,7 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
                                                 "Community Needs Support",
                                                 "Livelihood Initiatives"
                                             ].map((item, i) => (
-                                                <li key={i} className="flex items-start space-x-2 text-gray-700 text-sm">
+                                                <li key={i} className="flex items-start space-x-2 text-gray-700 dark:text-gray-300 text-sm">
                                                     <Check size={16} className="text-accent-500 mt-0.5 flex-shrink-0" />
                                                     <span>{item}</span>
                                                 </li>
@@ -230,8 +230,8 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
                                             <Phone size={24} />
                                         </div>
                                         <div>
-                                            <span className="block text-xs font-bold text-gray-500 uppercase">Call Any Time</span>
-                                            <a href="tel:0543483159" className="text-lg font-bold text-gray-900 hover:text-primary-600">054 348 3159</a>
+                                            <span className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase">Call Any Time</span>
+                                            <a href="tel:0543483159" className="text-lg font-bold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">054 348 3159</a>
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
             </ScrollReveal>
 
             {/* Services Section Summary */}
-            <section className="py-24 bg-gray-50">
+            <section className="py-24 bg-gray-50 dark:bg-gray-800">
                 <div className="container mx-auto px-4">
                     <ScrollReveal>
                         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -317,7 +317,7 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
             </ScrollReveal>
 
             {/* Blog Section Summary */}
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-white dark:bg-gray-900">
                 <div className="container mx-auto px-4">
                     <ScrollReveal>
                         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -343,20 +343,20 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
             </section>
 
             {/* FAQ Section */}
-            <section className="py-24 bg-gray-50 relative overflow-hidden">
+            <section className="py-24 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
                  <div className="absolute top-0 left-10 w-32 h-32 bg-primary-100 rounded-full blur-3xl opacity-60"></div>
                  <div className="absolute bottom-10 right-10 w-40 h-40 bg-accent-100 rounded-full blur-3xl opacity-60"></div>
 
                 <div className="container mx-auto px-4 relative z-10">
                      <ScrollReveal>
                         <div className="text-center max-w-3xl mx-auto mb-12">
-                            <div className="inline-flex items-center justify-center p-3 bg-white rounded-full shadow-sm mb-6 text-primary-600">
+                            <div className="inline-flex items-center justify-center p-3 bg-white dark:bg-gray-900 rounded-full shadow-sm mb-6 text-primary-600 dark:text-primary-400">
                                 <HelpCircle size={24} />
                             </div>
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 mb-4">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-white mb-4">
                                 Frequently Asked Questions
                             </h2>
-                            <p className="text-lg text-gray-600">
+                            <p className="text-lg text-gray-600 dark:text-gray-300">
                                 Have questions? We have answers. If you don't see what you're looking for, feel free to contact us.
                             </p>
                         </div>
