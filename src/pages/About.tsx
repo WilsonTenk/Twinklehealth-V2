@@ -7,27 +7,27 @@ import { TeamMember } from '../types';
 const team: TeamMember[] = [
     {
         id: 1,
-        name: "Dr. Sarah Mensah",
-        role: "Founder & CEO",
+        name: "Mawunya Akosua Afordoanyi",
+        role: "Founder & President",
         image: "images/PHOTO-2025-04-14-17-02-59.jpg",
-        bio: "Dr. Mensah founded Twinkle Health with a vision to eliminate healthcare disparities in Ghana."
+        bio: "Mawunya founded Twinkle Health with a vision to eliminate healthcare disparities in Ghana."
     },
     {
         id: 2,
-        name: "Kwame Asante",
-        role: "Director of Operations",
+        name: "Godwin Yaw Gbedemah",
+        role: "Vice President",
         image: "images/PHOTO-2025-04-14-17-03-00.jpg",
     },
     {
         id: 3,
-        name: "Ama Serwaa",
-        role: "Community Outreach Lead",
+        name: "Austin Quaye & George Djisam",
+        role: "Community Outreach Leads",
         image: "images/PHOTO-2025-04-14-16-34-55 (2).jpg",
     },
     {
         id: 4,
-        name: "John Doe",
-        role: "Medical Coordinator",
+        name: "Elinam Komla Ansawoe & Victor Kofi Norgbedzi",
+        role: "Medical Coordinators",
         image: "images/PHOTO-2025-04-14-16-34-56 (2).jpg",
     }
 ];
@@ -57,7 +57,10 @@ const About: React.FC = () => {
                                 description="Twinkle Health Foundation was born out of a simple yet powerful realization: geography should not determine one's right to live a healthy life."
                             />
                             <p className="text-gray-600 mb-6 leading-relaxed">
-                                Founded in Accra, Ghana, we started as a small group of medical volunteers visiting remote villages on weekends. Today, we have grown into a full-fledged NGO affecting thousands of lives annually.
+                                Founded in Accra, Ghana, we started as a small group of medical volunteers visiting remote communities. Today, we have grown into a full-fledged NGO affecting thousands of lives annually.
+                            </p>
+                            <p className="text-gray-600 mb-6 leading-relaxed">
+                                Health education can go beyond health talks; drama and arts can also be an innovative tool to educate communities on their health needs.
                             </p>
                             <p className="text-gray-600 mb-8 leading-relaxed">
                                 We focus on holistic health - treating the body, educating the mind through our drama programs, and empowering the community economically. We believe sustainability is key to lasting change.
@@ -65,11 +68,11 @@ const About: React.FC = () => {
 
                             <div className="grid grid-cols-2 gap-6">
                                 <div className="p-6 bg-primary-50 rounded-xl border border-primary-100">
-                                    <h3 className="text-3xl font-bold text-primary-600 mb-2">50+</h3>
+                                    <h3 className="text-3xl font-bold text-primary-600 mb-2">10</h3>
                                     <p className="text-gray-700 font-medium">Communities Served</p>
                                 </div>
                                 <div className="p-6 bg-accent-50 rounded-xl border border-accent-100">
-                                    <h3 className="text-3xl font-bold text-accent-600 mb-2">10k+</h3>
+                                    <h3 className="text-3xl font-bold text-accent-600 mb-2">3,378</h3>
                                     <p className="text-gray-700 font-medium">Lives Impacted</p>
                                 </div>
                             </div>
@@ -109,9 +112,13 @@ const About: React.FC = () => {
                             <h3 className="text-xl font-bold text-gray-900 mb-4">Our Values</h3>
                             <ul className="space-y-2 text-gray-600">
                                 <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Compassion</li>
-                                <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Integrity</li>
-                                <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Sustainability</li>
+                                <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Accessibility</li>
                                 <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Innovation</li>
+                                <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Integrity</li>
+                                <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Collaboration</li>
+                                <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Dignity</li>
+                                <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Empowerment</li>
+                                <li className="flex items-center"><Check size={16} className="text-green-500 mr-2" /> Sustainability</li>
                             </ul>
                         </div>
                     </div>
@@ -130,8 +137,8 @@ const About: React.FC = () => {
                                     "I started Twinkle Health because I saw too many preventable tragedies in our rural areas. We are not just treating patients; we are building a healthier, more resilient nation, one village at a time."
                                 </p>
                                 <div>
-                                    <p className="text-white font-bold text-xl">Dr. Sarah Mensah</p>
-                                    <p className="text-primary-300">Founder & CEO</p>
+                                    <p className="text-white font-bold text-xl">Mawunya Akosua Afordoanyi</p>
+                                    <p className="text-primary-300">Founder & President</p>
                                 </div>
                             </div>
                             <div className="h-full min-h-[400px]">

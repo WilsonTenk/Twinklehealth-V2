@@ -1,8 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Theater, Stethoscope, HandHeart, Sprout, 
-  Shirt, Users
+  Shirt, Users, Shield
 } from 'lucide-react';
 import { Service, BlogPost } from './types';
 import Header from './components/Header';
@@ -22,16 +22,15 @@ const services: Service[] = [
     {
         id: 1,
         title: "Health Education Through Drama",
-        description: "Engaging communities through creative drama programs to promote health awareness and education.",
-        fullDescription: "Our innovative Health Education Through Drama program uses theatrical performances and interactive drama workshops to make health education engaging and memorable. We create culturally relevant scripts that address local health challenges such as maternal health, child nutrition, disease prevention, and hygiene practices. The program combines entertainment with education, making complex health information accessible to communities with varying literacy levels.",
+        description: "Health education can go beyond health talks; drama and arts act as an innovative tool to educate communities. We identify specific health needs upon community entry, then engage a small group of local pupils to enact dramas using the local dialect and day-to-day activities.",
+        fullDescription: "Health education can go beyond health talks; drama and arts act as an innovative tool to educate communities. We identify specific health needs upon community entry, then engage a small group of local pupils to enact dramas using the local dialect and day-to-day activities. Our innovative Health Education Through Drama program uses theatrical performances and interactive drama workshops to make health education engaging and memorable. We create culturally relevant scripts that address local health challenges such as maternal health, child nutrition, disease prevention, and hygiene practices. The program combines entertainment with education, making complex health information accessible to communities with varying literacy levels.",
         icon: Theater,
         image: "images/PHOTO-2025-04-14-16-34-54.jpg",
         tag: "Education",
         features: [
-            "Interactive Street Plays",
-            "Local Language Scripts",
-            "Post-Performance Q&A Sessions",
-            "Community Actor Training"
+            "Pupil Engagement",
+            "Local Dialect Scripts",
+            "Community Entry Needs Assessment"
         ],
         impactStats: [
             { value: "50+", label: "Communities Reached" },
@@ -42,68 +41,67 @@ const services: Service[] = [
     {
         id: 2,
         title: "Free Medical Services",
-        description: "Providing accessible primary healthcare services to underserved communities with limited medical access.",
-        fullDescription: "We organize regular medical outreach camps in remote and underserved areas where healthcare infrastructure is lacking. Our team of volunteer doctors, nurses, and pharmacists provide general consultations, screenings for chronic conditions like hypertension and diabetes, maternal health checks, and pediatric care. We also provide free essential medications and refer complex cases to partner hospitals.",
+        description: "Includes a team of laboratory scientists, ENT specialists, and midwives operating a Child Welfare Clinic alongside general practitioners.",
+        fullDescription: "Includes a team of laboratory scientists, ENT specialists, and midwives operating a Child Welfare Clinic alongside general practitioners. We organize regular medical outreach camps in remote and underserved areas where healthcare infrastructure is lacking. Our team of volunteer doctors, nurses, and pharmacists provide general consultations, screenings for chronic conditions like hypertension and diabetes, maternal health checks, and pediatric care. We also provide free essential medications and refer complex cases to partner hospitals.",
         icon: Stethoscope,
         image: "images/PHOTO-2025-04-14-16-34-55.jpg",
         tag: "Healthcare",
         features: [
-            "General Consultations",
-            "Free Medication Dispensing",
-            "Chronic Disease Screening",
-            "Maternal & Child Health Checks"
+            "General Consultation",
+            "Eye Screening",
+            "ENT Screening",
+            "Child Welfare Clinic",
+            "Laboratory Tests"
         ],
         impactStats: [
-            { value: "10k+", label: "Patients Treated" },
-            { value: "500+", label: "Surgeries Facilitated" },
-            { value: "100%", label: "Free Care Provided" }
+            { value: "3,000+", label: "Treated" },
+            { value: "200+", label: "Referred" }
         ]
     },
     {
         id: 3,
         title: "Community Needs Support",
-        description: "Addressing specific local community needs through targeted support programs and initiatives.",
-        fullDescription: "We believe in listening to the community. Our Community Needs Support initiative is a flexible fund that allows us to respond to specific, urgent requests from community leaders. This has included repairing boreholes for clean water, renovating dilapidated classrooms, and providing emergency relief during floods. By addressing these foundational needs, we create an environment where health can thrive.",
+        description: "Addressing specific local needs. Instead of large infrastructure, we focus on immediate impact: donating educational items for projects, providing wheelchairs for those with mobility issues, and supplying medications/consumables to CHPS compounds.",
+        fullDescription: "Addressing specific local needs. Instead of large infrastructure, we focus on immediate impact: donating educational items for projects, providing wheelchairs for those with mobility issues, and supplying medications/consumables to CHPS compounds. We believe in listening to the community. Our Community Needs Support initiative is a flexible fund that allows us to respond to specific, urgent requests from community leaders. By addressing these foundational needs, we create an environment where health can thrive.",
         icon: HandHeart,
         image: "images/PHOTO-2025-04-14-16-34-56.jpg",
         tag: "Support",
         features: [
-            "Clean Water Projects",
-            "School Renovations",
-            "Emergency Relief",
-            "Sanitation Infrastructure"
+            "Educational Project Donations",
+            "Wheelchair Donations",
+            "Medical Consumables for CHPS",
+            "Targeted Support"
         ],
         impactStats: [
-            { value: "20", label: "Boreholes Repaired" },
-            { value: "5", label: "Schools Renovated" },
-            { value: "3000+", label: "Beneficiaries" }
+            { value: "N/A", label: "Educational Items Donated" },
+            { value: "N/A", label: "CHPS Compounds Supported" },
+            { value: "N/A", label: "Lives Touched" }
         ]
     },
     {
         id: 4,
         title: "Livelihood Empowerment",
-        description: "Economic development programs to help community members build sustainable livelihoods.",
-        fullDescription: "Poverty is a major determinant of health. Our Livelihood Empowerment program focuses on equipping women and youth with vocational skills such as soap making, bead work, and sustainable farming techniques. We also provide micro-grants and financial literacy training to help them start small businesses, ensuring they can afford nutritious food and healthcare for their families.",
+        description: "Empowering both men and women. We provide training in bead making and soap making. We also donated a sewing machine through a collaboration. Note: We provide literacy on sustainable financial management instead of micro-grants.",
+        fullDescription: "Empowering both men and women. We provide training in bead making and soap making. We also donated a sewing machine through a collaboration. Note: We provide literacy on sustainable financial management instead of micro-grants. Poverty is a major determinant of health. Our Livelihood Empowerment program focuses on equipping women and youth with vocational skills such as soap making, bead work, and sustainable farming techniques. We also provide financial literacy training to help them start small businesses, ensuring they can afford nutritious food and healthcare for their families.",
         icon: Sprout,
         image: "images/PHOTO-2025-04-14-16-34-57.jpg",
         tag: "Empowerment",
         features: [
-            "Vocational Skills Training",
-            "Micro-Business Grants",
-            "Financial Literacy Workshops",
-            "Market Access Support"
+            "Bead & Soap Making",
+            "Financial Literacy",
+            "Men & Women Included",
+            "Equipment Donation"
         ],
         impactStats: [
-            { value: "200+", label: "Women Trained" },
-            { value: "50", label: "Businesses Started" },
-            { value: "85%", label: "Income Increase" }
+            { value: "200+", label: "Trained (Male & Female)" },
+            { value: "20+", label: "Businesses Started" }
         ]
     },
     {
         id: 5,
         title: "Clean Clothing Drive",
-        description: "Distributing essential clothing items to those in need within our target communities.",
-        fullDescription: "Dignity is a key part of mental well-being. Our Clean Clothing Drive collects new and gently used clothing, shoes, and bedding to distribute to vulnerable families, particularly in rural areas and orphanages. We ensure that every item is clean and in good condition, helping to protect against the elements and boost self-esteem.",
+        description: "We create a dignified shopping experience where items are carefully selected and arranged. Community members 'shop' their way through, selecting their desired clothing, including perfumes and accessories.",
+        fullDescription: "We create a dignified shopping experience where items are carefully selected and arranged. Community members 'shop' their way through, selecting their desired clothing, including perfumes and accessories. Dignity is a key part of mental well-being. Our Clean Clothing Drive collects new and gently used clothing, shoes, and bedding to distribute to vulnerable families, particularly in rural areas. We ensure that every item is clean and in good condition, helping to protect against the elements and boost self-esteem.",
         icon: Shirt,
         image: "images/PHOTO-2025-04-14-16-34-58.jpg",
         tag: "Support",
@@ -116,7 +114,7 @@ const services: Service[] = [
         impactStats: [
             { value: "5000+", label: "Items Distributed" },
             { value: "800", label: "Families Supported" },
-            { value: "12", label: "Orphanages Reached" }
+            { value: "12", label: "Communities Reached" }
         ]
     },
     {
@@ -137,6 +135,26 @@ const services: Service[] = [
             { value: "100+", label: "Sessions Held" },
             { value: "1500+", label: "Participants" },
             { value: "100%", label: "Community Driven" }
+        ]
+    },
+    {
+        id: 7,
+        title: "Prison Therapy",
+        description: "Providing therapeutic support and rehabilitation programs for inmates to support mental well-being and reintegration.",
+        fullDescription: "Providing therapeutic support and rehabilitation programs for inmates to support mental well-being and reintegration. Our Prison Therapy program focuses on addressing the mental health needs of incarcerated individuals, helping them develop coping strategies, emotional resilience, and life skills that will support successful reintegration into society upon release.",
+        icon: Shield,
+        image: "images/PHOTO-2025-04-14-16-34-54.jpg",
+        tag: "Healthcare",
+        features: [
+            "Mental Health Support",
+            "Rehabilitation Programs",
+            "Reintegration Preparation",
+            "Therapeutic Counseling"
+        ],
+        impactStats: [
+            { value: "N/A", label: "Inmates Supported" },
+            { value: "N/A", label: "Sessions Conducted" },
+            { value: "N/A", label: "Facilities Reached" }
         ]
     }
 ];
@@ -217,6 +235,37 @@ const blogPosts: BlogPost[] = [
 const App: React.FC = () => {
     // State now handles 'page' name, an optional 'id' for detail views, and 'query' for search
     const [viewState, setViewState] = useState<{ page: string; id?: number; query?: string }>({ page: 'Home' });
+    
+    // Dark mode state
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    // Initialize dark mode from localStorage or system preference
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        
+        setIsDarkMode(shouldBeDark);
+        if (shouldBeDark) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, []);
+
+    // Toggle dark mode
+    const toggleTheme = () => {
+        const newDarkMode = !isDarkMode;
+        setIsDarkMode(newDarkMode);
+        
+        if (newDarkMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    };
 
     const navigate = (page: string, id?: number, query?: string) => {
         setViewState({ page, id, query });
@@ -274,11 +323,13 @@ const App: React.FC = () => {
     };
 
     return (
-        <div className="font-sans text-gray-800 overflow-x-hidden flex flex-col min-h-screen">
+        <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 overflow-x-hidden flex flex-col min-h-screen transition-colors duration-300">
             <Header 
                 currentPage={getActiveNav()} 
                 onNavigate={(page) => navigate(page)} 
                 onSearch={(query) => navigate('SearchResults', undefined, query)}
+                isDarkMode={isDarkMode}
+                toggleTheme={toggleTheme}
             />
             
             <main className="flex-grow">
