@@ -1,4 +1,4 @@
-```javascript
+
 import React, { useState } from 'react';
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight, Mail, Phone, Linkedin, ChevronDown, ChevronUp } from 'lucide-react';
 
@@ -9,7 +9,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-    
+
     // Accordion state for mobile
     const [openSection, setOpenSection] = useState<string | null>(null);
 
@@ -54,7 +54,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <footer className="bg-gray-950 text-gray-300 pt-16 pb-10 border-t border-gray-900">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
-                    
+
                     {/* Brand & Socials */}
                     <div className="space-y-6 lg:col-span-1">
                         <div className="inline-block cursor-pointer bg-white p-3 rounded-xl shadow-lg hover:scale-105 transition-transform" onClick={() => onNavigate('Home')}>
@@ -67,7 +67,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         <p className="text-sm leading-relaxed text-gray-400">
                             Transforming lives through accessible healthcare and community empowerment. We believe quality healthcare is a fundamental right.
                         </p>
-                        
+
                         {/* Social Icons - Modern & Touch Friendly */}
                         <div className="flex flex-wrap gap-3">
                             {[
@@ -100,7 +100,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
                     {/* Quick Links - Accordion on Mobile */}
                     <div className="lg:col-span-1 border-b border-gray-900 lg:border-none pb-6 lg:pb-0">
-                        <button 
+                        <button
                             className="w-full flex justify-between items-center lg:cursor-default"
                             onClick={() => toggleSection('quickLinks')}
                         >
@@ -109,11 +109,11 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                                 {openSection === 'quickLinks' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                             </div>
                         </button>
-                        <div className={`mt - 4 lg: mt - 6 space - y - 3 overflow - hidden transition - all duration - 300 ${ openSection === 'quickLinks' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100' } `}>
+                        <div className={`mt - 4 lg: mt - 6 space - y - 3 overflow - hidden transition - all duration - 300 ${openSection === 'quickLinks' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100'} `}>
                             {['About', 'Projects', 'Blog', 'Get Involved'].map((item) => (
-                                <button 
+                                <button
                                     key={item}
-                                    onClick={() => onNavigate(item)} 
+                                    onClick={() => onNavigate(item)}
                                     className="block w-full text-left hover:text-primary-400 text-gray-400 transition-colors text-sm py-1"
                                 >
                                     {item}
@@ -124,7 +124,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
                     {/* Services - Accordion on Mobile */}
                     <div className="lg:col-span-1 border-b border-gray-900 lg:border-none pb-6 lg:pb-0">
-                         <button 
+                        <button
                             className="w-full flex justify-between items-center lg:cursor-default"
                             onClick={() => toggleSection('services')}
                         >
@@ -133,11 +133,11 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                                 {openSection === 'services' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                             </div>
                         </button>
-                        <div className={`mt - 4 lg: mt - 6 space - y - 3 overflow - hidden transition - all duration - 300 ${ openSection === 'services' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100' } `}>
+                        <div className={`mt - 4 lg: mt - 6 space - y - 3 overflow - hidden transition - all duration - 300 ${openSection === 'services' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100'} `}>
                             {['Health Education', 'Medical Services', 'Community Support', 'Livelihood'].map((item) => (
-                                <button 
+                                <button
                                     key={item}
-                                    onClick={() => onNavigate('Projects')} 
+                                    onClick={() => onNavigate('Projects')}
                                     className="block w-full text-left hover:text-primary-400 text-gray-400 transition-colors text-sm py-1"
                                 >
                                     {item}
@@ -151,7 +151,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         <div>
                             <h3 className="text-white font-bold text-lg mb-4">Stay Connected</h3>
                             <p className="text-sm text-gray-400 mb-4">Subscribe to our newsletter for updates and impact stories.</p>
-                            
+
                             {status === 'success' ? (
                                 <div className="bg-green-500/10 text-green-400 p-4 rounded-xl text-sm border border-green-500/20 animate-fade-in">
                                     <p className="font-bold mb-1">Subscribed!</p>
@@ -172,7 +172,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                                         />
                                         <button
                                             type="submit"
-                                            className={`bg - primary - 600 hover: bg - primary - 500 text - white px - 4 rounded - r - xl transition - colors flex items - center justify - center ${ status === 'submitting' ? 'opacity-70 cursor-wait' : '' } `}
+                                            className={`bg - primary - 600 hover: bg - primary - 500 text - white px - 4 rounded - r - xl transition - colors flex items - center justify - center ${status === 'submitting' ? 'opacity-70 cursor-wait' : ''} `}
                                             disabled={status === 'submitting'}
                                         >
                                             {status === 'submitting' ? (
