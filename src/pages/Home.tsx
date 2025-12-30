@@ -90,6 +90,15 @@ const AccordionItem: React.FC<{ item: FaqItem; isOpen: boolean; onToggle: () => 
 
 const Home: React.FC<HomeProps> = ({ projects, blogPosts, onNavigate }) => {
     const [openFaqId, setOpenFaqId] = useState<number | null>(1);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    // Auto-play for testimonials carousel
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveIndex((current) => (current + 1) % testimonials.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
 
     const toggleFaq = (id: number) => {
         setOpenFaqId(openFaqId === id ? null : id);
@@ -272,6 +281,7 @@ const Home: React.FC<HomeProps> = ({ projects, blogPosts, onNavigate }) => {
             </section>
 
             {/* Testimonials Section */}
+            {/* Testimonials Section */}
             <ScrollReveal>
                 <section className="py-24 bg-primary-900 text-white relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
@@ -288,28 +298,77 @@ const Home: React.FC<HomeProps> = ({ projects, blogPosts, onNavigate }) => {
                             />
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {testimonials.map((testimonial, i) => (
-                                <ScrollReveal key={testimonial.id} delay={i * 150}>
-                                    <div className="bg-white/10 backdrop-blur-sm border border-white/10 p-8 rounded-2xl relative hover:bg-white/15 transition-colors flex flex-col h-full">
-                                        <Quote className="text-accent-500 mb-6 opacity-80 flex-shrink-0" size={40} />
-                                        <p className="text-lg text-gray-100 mb-8 leading-relaxed italic flex-grow">
-                                            "{testimonial.text}"
-                                        </p>
-                                        <div className="flex items-center mt-auto">
-                                            <img
-                                                src={testimonial.image}
-                                                alt={testimonial.name}
-                                                className="w-12 h-12 rounded-full object-cover border-2 border-accent-500 mr-4"
-                                            />
-                                            <div>
-                                                <h4 className="font-bold text-white">{testimonial.name}</h4>
-                                                <p className="text-primary-200 text-sm">{testimonial.role}</p>
+                        {/* Testimonials Carousel */}
+                        <div className="relative">
+                            <div className="overflow-hidden">
+                                <div
+                                    className="flex transition-transform duration-500 ease-in-out"
+                                    style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+                                >
+                                    {/* Mobile/Tablet View - 1 item per slide */}
+                                    <div className="md:hidden flex w-full flex-shrink-0">
+                                        {testimonials.map((testimonial) => (
+                                            <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
+                                                <div className="bg-white/10 backdrop-blur-sm border border-white/10 p-8 rounded-2xl relative hover:bg-white/15 transition-colors flex flex-col h-full min-h-[350px]">
+                                                    <Quote className="text-accent-500 mb-6 opacity-80 flex-shrink-0" size={40} />
+                                                    <p className="text-lg text-gray-100 mb-8 leading-relaxed italic flex-grow">
+                                                        "{testimonial.text}"
+                                                    </p>
+                                                    <div className="flex items-center mt-auto">
+                                                        <img
+                                                            src={testimonial.image}
+                                                            alt={testimonial.name}
+                                                            className="w-12 h-12 rounded-full object-cover border-2 border-accent-500 mr-4"
+                                                        />
+                                                        <div>
+                                                            <h4 className="font-bold text-white">{testimonial.name}</h4>
+                                                            <p className="text-primary-200 text-sm">{testimonial.role}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        ))}
                                     </div>
-                                </ScrollReveal>
-                            ))}
+                                </div>
+
+                                {/* Desktop Grid View - Keeps existing grid layout for larger screens */}
+                                <div className="hidden md:grid md:grid-cols-3 gap-8">
+                                    {testimonials.map((testimonial, i) => (
+                                        <ScrollReveal key={testimonial.id} delay={i * 150}>
+                                            <div className="bg-white/10 backdrop-blur-sm border border-white/10 p-8 rounded-2xl relative hover:bg-white/15 transition-colors flex flex-col h-full">
+                                                <Quote className="text-accent-500 mb-6 opacity-80 flex-shrink-0" size={40} />
+                                                <p className="text-lg text-gray-100 mb-8 leading-relaxed italic flex-grow">
+                                                    "{testimonial.text}"
+                                                </p>
+                                                <div className="flex items-center mt-auto">
+                                                    <img
+                                                        src={testimonial.image}
+                                                        alt={testimonial.name}
+                                                        className="w-12 h-12 rounded-full object-cover border-2 border-accent-500 mr-4"
+                                                    />
+                                                    <div>
+                                                        <h4 className="font-bold text-white">{testimonial.name}</h4>
+                                                        <p className="text-primary-200 text-sm">{testimonial.role}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ScrollReveal>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Mobile Navigation Dots */}
+                            <div className="md:hidden flex justify-center mt-8 space-x-2">
+                                {testimonials.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setActiveIndex(index)}
+                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeIndex ? "bg-accent-500 w-8" : "bg-white/30 hover:bg-white/50"
+                                            }`}
+                                        aria-label={`Go to slide ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
