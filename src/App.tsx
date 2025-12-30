@@ -99,7 +99,7 @@ const projects: Project[] = [
         id: 4,
         title: "Livelihood Empowerment",
         description: "Empowering both men and women. We provide training in bead making and soap making. We also donate equipment (like sewing machines) and provide literacy on sustainable financial management.",
-        fullDescription: "Empowering both men and women. We provide training in bead making and soap making. We also donate equipment (like sewing machines) and provide literacy on sustainable financial management. Poverty is a major determinant of health. Our Livelihood Empowerment program focuses on equipping women and youth with vocational skills such as soap making, bead work, and sustainable farming techniques. We also provide financial literacy training to help them start small businesses, ensuring they can afford nutritious food and healthcare for their families.",
+        fullDescription: "Empowering both men and women. We provide training in bead making and soap making. We also donate equipment (like sewing machines) and provide literacy on sustainable financial management. Poverty is a major determinant of health. Our Livelihood Empowerment program focuses on equipping women and youth with vocational skills such as soap making and bead work. We also provide financial literacy training to help them start small businesses, ensuring they can afford nutritious food and healthcare for their families.",
         icon: Sprout,
         image: "images/PHOTO-2025-04-14-16-34-57.jpg",
         tag: "Empowerment",
@@ -209,8 +209,8 @@ const blogPosts: BlogPost[] = [
         tags: ["Education", "Drama", "Community"],
         content: (
             <>
-                <p>In the dusty courtyards of rural Ghana, a crowd gathers. They aren't there for a political rally or a food distribution, but for a play. Laughter erupts as a character dramatically refuses to wash his hands before eating, only to be scolded by a witty grandmother figure.</p>
-                <p>This is the essence of our <strong>Health Education Through Drama</strong> program. By weaving life-saving health information into entertaining narratives, we bypass the skepticism and boredom often associated with traditional lectures.</p>
+                <p>It is enacted by a group of pupils in their community, using day-to-day activities and their local dialect. Depending on the health needs identified upon community entry, we engage the pupils in the community in a drama by writing a script for them incorporating their day-to-day activities and culture.</p>
+                <p>We write about the peculiar illnesses in the community, their causes, and suggest necessary solutions in the drama. This makes it easily relatable and more understandable for the community members. These pupils enact it to the entire community during the screening.</p>
                 <h3>Why Drama Works</h3>
                 <p>Storytelling is an ancient African tradition. It is how history, values, and lessons have been passed down for generations. By utilizing this medium, Twinkle Health Foundation taps into a communication channel that is already trusted and understood.</p>
                 <p>Recent surveys in the communities we visited show a <strong>40% increase</strong> in knowledge regarding hygiene practices and malaria prevention compared to communities receiving standard pamphlet distribution.</p>
@@ -258,9 +258,9 @@ const blogPosts: BlogPost[] = [
         content: (
             <>
                 <p>Health is not just biology; it is economics. A family that cannot afford nutritious food cannot stay healthy. That is why we are thrilled to announce the expansion of our Livelihood Empowerment Program.</p>
-                <p>This new phase focuses specifically on women in agricultural communities. By providing them with initial capital and training in modern farming techniques, we aim to boost crop yields and household income.</p>
+                <p>This new phase focuses specifically on women and men in rural communities. By providing them with startup materials and training in soap and bead making, we aim to boost household income.</p>
                 <h3>The Pilot Success</h3>
-                <p>Our pilot program in the Ashanti region saw 50 women start small poultry farms. Within six months, 85% of them were generating a profit, and school attendance for their children increased significantly as school fees were no longer a burden.</p>
+                <p>Our pilot program in the Eastern region saw 50 participants start small businesses. Within six months, 85% of them were generating a profit, and school attendance for their children increased significantly as school fees were no longer a burden.</p>
                 <p>We are now accepting applications for the next cohort. If you are interested in mentoring or sponsoring a woman entrepreneur, please visit our Get Involved page.</p>
             </>
         )

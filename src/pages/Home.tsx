@@ -31,7 +31,7 @@ const testimonials: Testimonial[] = [
     },
     {
         id: 3,
-        text: "Providing free surgeries for our children has given them a second chance at life. We are forever grateful for the medical team's dedication.",
+        text: "Providing reading glasses to us has given us a new vision. We are forever grateful for the medical team's dedication.",
         name: "Grace Antwi",
         role: "Mother",
         image: "images/PHOTO-2025-04-14-16-35-00 (2).jpg"
@@ -42,7 +42,7 @@ const faqs: FaqItem[] = [
     {
         id: 1,
         question: "How is my donation used?",
-        answer: "We ensure 100% transparency. 85% of all donations go directly to our programs (medical supplies, education materials, community support), while 15% covers administrative and operational costs to keep the foundation running efficiently."
+        answer: "We ensure 100% transparency. 85% of all donations go directly to our programs (medical supplies, education materials, community support), while 15% goes to transportation. Nothing comes to the administrative and running of the NGO."
     },
     {
         id: 2,
@@ -52,7 +52,7 @@ const faqs: FaqItem[] = [
     {
         id: 3,
         question: "Where does Twinkle Health Foundation operate?",
-        answer: "We currently focus on rural and peri-urban communities in Ghana, specifically in the Volta and Ashanti regions, with plans to expand to the Northern region by 2026."
+        answer: "We currently focus on rural and peri-urban communities in Ghana, specifically in the Eastern, Western and Central regions, with plans to expand to the Ashanti and Northern regions."
     },
     {
         id: 4,
@@ -214,7 +214,8 @@ const Home: React.FC<HomeProps> = ({ projects, blogPosts, onNavigate }) => {
                                                 "Health Education Through Drama",
                                                 "Free Medical Services",
                                                 "Community Needs Support",
-                                                "Livelihood Initiatives"
+                                                "Livelihood Initiatives",
+                                                "Prison therapy"
                                             ].map((item, i) => (
                                                 <li key={i} className="flex items-start space-x-2 text-gray-700 dark:text-gray-300 text-sm">
                                                     <Check size={16} className="text-accent-500 mt-0.5 flex-shrink-0" />
