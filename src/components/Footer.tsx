@@ -1,12 +1,13 @@
-
 import React, { useState } from 'react';
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight, Mail, Phone, Linkedin, ChevronDown, ChevronUp } from 'lucide-react';
+import { Project } from '../types';
 
 interface FooterProps {
     onNavigate: (page: string) => void;
+    projects: Project[];
 }
 
-const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+const Footer: React.FC<FooterProps> = ({ onNavigate, projects }) => {
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
@@ -48,6 +49,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             console.error(error);
             setStatus('error');
         }
+    };
+
+    const truncate = (str: string, n: number) => {
+        return str.length > n ? str.slice(0, n) + "..." : str;
     };
 
     return (
@@ -109,8 +114,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                                 {openSection === 'quickLinks' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                             </div>
                         </button>
-                        <div className={`mt - 4 lg: mt - 6 space - y - 3 overflow - hidden transition - all duration - 300 ${openSection === 'quickLinks' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100'} `}>
-                            {['About', 'Projects', 'Blog', 'Get Involved'].map((item) => (
+                        <div className={`mt-4 lg:mt-6 space-y-3 overflow-hidden transition-all duration-300 ${openSection === 'quickLinks' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100'}`}>
+                            {['Home', 'About', 'Projects', 'Blog', 'Get Involved'].map((item) => (
                                 <button
                                     key={item}
                                     onClick={() => onNavigate(item)}
@@ -122,25 +127,26 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         </div>
                     </div>
 
-                    {/* Services - Accordion on Mobile */}
+                    {/* Projects - Accordion on Mobile */}
                     <div className="lg:col-span-1 border-b border-gray-900 lg:border-none pb-6 lg:pb-0">
                         <button
                             className="w-full flex justify-between items-center lg:cursor-default"
-                            onClick={() => toggleSection('services')}
+                            onClick={() => toggleSection('projects')}
                         >
-                            <h3 className="text-white font-bold text-lg">Our Focus</h3>
+                            <h3 className="text-white font-bold text-lg">Our Projects</h3>
                             <div className="lg:hidden text-gray-500">
-                                {openSection === 'services' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                                {openSection === 'projects' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                             </div>
                         </button>
-                        <div className={`mt - 4 lg: mt - 6 space - y - 3 overflow - hidden transition - all duration - 300 ${openSection === 'services' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100'} `}>
-                            {['Health Education', 'Medical Services', 'Community Support', 'Livelihood'].map((item) => (
+                        <div className={`mt-4 lg:mt-6 space-y-3 overflow-hidden transition-all duration-300 ${openSection === 'projects' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100'}`}>
+                            {projects.slice(0, 4).map((project) => (
                                 <button
-                                    key={item}
+                                    key={project.id}
                                     onClick={() => onNavigate('Projects')}
                                     className="block w-full text-left hover:text-primary-400 text-gray-400 transition-colors text-sm py-1"
+                                    title={project.title}
                                 >
-                                    {item}
+                                    {truncate(project.title, 25)}
                                 </button>
                             ))}
                         </div>
@@ -172,7 +178,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                                         />
                                         <button
                                             type="submit"
-                                            className={`bg - primary - 600 hover: bg - primary - 500 text - white px - 4 rounded - r - xl transition - colors flex items - center justify - center ${status === 'submitting' ? 'opacity-70 cursor-wait' : ''} `}
+                                            className={`bg-primary-600 hover:bg-primary-500 text-white px-4 rounded-r-xl transition-colors flex items-center justify-center ${status === 'submitting' ? 'opacity-70 cursor-wait' : ''}`}
                                             disabled={status === 'submitting'}
                                         >
                                             {status === 'submitting' ? (
@@ -203,7 +209,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </div>
 
                 <div className="pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
-                    <p>&copy; {new Date().getFullYear()} Twinkle Health Foundation.</p>
+                    <p>&copy; {new Date().getFullYear()} Twinkle Health Foundation. All rights reserved.</p>
                     <div className="flex space-x-6">
                         <a href="#" className="hover:text-primary-400 transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-primary-400 transition-colors">Terms of Service</a>

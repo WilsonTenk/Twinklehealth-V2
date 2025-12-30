@@ -375,7 +375,7 @@ const App: React.FC = () => {
                 </Suspense>
             </main>
 
-            <Footer onNavigate={(page) => navigate(page)} />
+            <Footer onNavigate={(page) => navigate(page)} projects={projects} />
         </div>
     );
 };
