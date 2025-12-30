@@ -1,42 +1,38 @@
-
 import React, { useState } from 'react';
-import { Heart, HandHeart, UserPlus, CheckCircle, CreditCard } from 'lucide-react';
+import { Heart, HandHeart, UserPlus, CheckCircle } from 'lucide-react';
 
 const GetInvolved: React.FC = () => {
     const [activeTab, setActiveTab] = useState<'volunteer' | 'partner' | 'donate'>('volunteer');
-    const [donationAmount, setDonationAmount] = useState<string>('100');
-    const [customAmount, setCustomAmount] = useState<string>('');
     const [formSubmitted, setFormSubmitted] = useState(false);
 
-    const handleDonation = (e: React.FormEvent) => {
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const finalAmount = customAmount || donationAmount;
-        
-        // PAYSTACK INTEGRATION NOTE:
-        // Replace 'pk_test_xxxxxxxxxxxxxxxxxxxx' with your actual public key.
-        // Use the Paystack Pop library or inline script.
-        alert(`Initiating Paystack payment for GHS ${finalAmount}. (Integration Point)`);
-        
-        // Example Paystack call:
-        // const handler = PaystackPop.setup({
-        //   key: 'YOUR_PUBLIC_KEY',
-        //   email: document.getElementById('email-address').value,
-        //   amount: finalAmount * 100, // in kobo
-        //   currency: 'GHS',
-        //   callback: function(response){
-        //     alert('Transaction successful. Ref: ' + response.reference);
-        //   },
-        //   onClose: function(){
-        //     alert('Window closed');
-        //   }
-        // });
-        // handler.openIframe();
-    };
 
-    const handleFormSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        setFormSubmitted(true);
-        setTimeout(() => setFormSubmitted(false), 5000); // Reset after 5s
+        const formData = new FormData(e.currentTarget);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/twinklehealthfoundation@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            });
+
+            if (response.ok) {
+                setFormSubmitted(true);
+                setTimeout(() => setFormSubmitted(false), 5000); // Reset after 5s
+                (e.target as HTMLFormElement).reset();
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            console.error("Form error:", error);
+            alert("There was an error sending your message.");
+        }
     };
 
     return (
@@ -55,21 +51,21 @@ const GetInvolved: React.FC = () => {
                 <div className="container mx-auto px-4">
                     {/* Tabs */}
                     <div className="flex flex-wrap justify-center gap-4 mb-12">
-                        <button 
+                        <button
                             onClick={() => setActiveTab('volunteer')}
                             className={`px-8 py-4 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm ${activeTab === 'volunteer' ? 'bg-primary-600 text-white shadow-lg scale-105' : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
                         >
                             <UserPlus size={20} />
                             <span>Volunteer</span>
                         </button>
-                        <button 
+                        <button
                             onClick={() => setActiveTab('partner')}
                             className={`px-8 py-4 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm ${activeTab === 'partner' ? 'bg-primary-600 text-white shadow-lg scale-105' : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
                         >
                             <HandHeart size={20} />
                             <span>Partner</span>
                         </button>
-                        <button 
+                        <button
                             onClick={() => setActiveTab('donate')}
                             className={`px-8 py-4 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm ${activeTab === 'donate' ? 'bg-accent-500 text-white shadow-lg scale-105' : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
                         >
@@ -93,24 +89,27 @@ const GetInvolved: React.FC = () => {
                                     </div>
                                 ) : (
                                     <form onSubmit={handleFormSubmit} className="space-y-6">
+                                        <input type="hidden" name="_subject" value="New Volunteer Application" />
+                                        <input type="hidden" name="_template" value="table" />
+
                                         <div className="grid md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
                                                 <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Full Name</label>
-                                                <input required type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="John Doe" />
+                                                <input required name="name" type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="John Doe" />
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Email Address</label>
-                                                <input required type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="john@example.com" />
+                                                <input required name="email" type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="john@example.com" />
                                             </div>
                                         </div>
                                         <div className="grid md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
                                                 <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Phone Number</label>
-                                                <input required type="tel" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="+233 XX XXX XXXX" />
+                                                <input required name="phone" type="tel" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="+233 XX XXX XXXX" />
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Area of Interest</label>
-                                                <select className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white">
+                                                <select name="interest" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white">
                                                     <option>Medical Team</option>
                                                     <option>Health Education / Drama</option>
                                                     <option>Logistics & Support</option>
@@ -120,7 +119,7 @@ const GetInvolved: React.FC = () => {
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Why do you want to join us?</label>
-                                            <textarea rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"></textarea>
+                                            <textarea name="message" rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"></textarea>
                                         </div>
                                         <button type="submit" className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 rounded-xl transition-colors shadow-lg">
                                             Submit Application
@@ -144,23 +143,26 @@ const GetInvolved: React.FC = () => {
                                     </div>
                                 ) : (
                                     <form onSubmit={handleFormSubmit} className="space-y-6">
+                                        <input type="hidden" name="_subject" value="New Partnership Proposal" />
+                                        <input type="hidden" name="_template" value="table" />
+
                                         <div className="space-y-2">
                                             <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Organization Name</label>
-                                            <input required type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" />
+                                            <input required name="organization" type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" />
                                         </div>
                                         <div className="grid md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
                                                 <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Contact Person</label>
-                                                <input required type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" />
+                                                <input required name="contact_person" type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" />
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Email Address</label>
-                                                <input required type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" />
+                                                <input required name="email" type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" />
                                             </div>
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Partnership Proposal / Message</label>
-                                            <textarea rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"></textarea>
+                                            <textarea name="proposal" rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"></textarea>
                                         </div>
                                         <button type="submit" className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 rounded-xl transition-colors shadow-lg">
                                             Send Proposal
@@ -176,46 +178,26 @@ const GetInvolved: React.FC = () => {
                                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Make a Donation</h2>
                                     <p className="text-gray-600 dark:text-gray-300">Secure payments via Paystack. Your contribution saves lives.</p>
                                 </div>
-                                
-                                <form onSubmit={handleDonation} className="max-w-md mx-auto space-y-8">
-                                    <div className="grid grid-cols-3 gap-4">
-                                        {['50', '100', '200', '500', '1000'].map((amt) => (
-                                            <button 
-                                                key={amt}
-                                                type="button"
-                                                onClick={() => { setDonationAmount(amt); setCustomAmount(''); }}
-                                                className={`py-3 rounded-xl border font-bold transition-all ${donationAmount === amt && !customAmount ? 'bg-accent-500 text-white border-accent-500' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-accent-500 dark:hover:border-accent-400'}`}
-                                            >
-                                                GHS {amt}
-                                            </button>
-                                        ))}
-                                        <div className="relative col-span-1">
-                                             <input 
-                                                type="number" 
-                                                placeholder="Custom"
-                                                value={customAmount}
-                                                onChange={(e) => setCustomAmount(e.target.value)}
-                                                className={`w-full h-full px-2 text-center rounded-xl border font-bold outline-none focus:border-accent-500 dark:focus:border-accent-400 focus:ring-2 focus:ring-accent-200 dark:focus:ring-accent-800 ${customAmount ? 'border-accent-500 dark:border-accent-400 bg-accent-50 dark:bg-accent-900/30' : 'border-gray-200 dark:border-gray-700'} text-gray-900 dark:text-white bg-white dark:bg-gray-800`}
-                                            />
-                                        </div>
-                                    </div>
 
-                                    <div className="space-y-4">
-                                        <div className="space-y-2">
-                                            <label className="text-sm font-bold text-gray-700 dark:text-gray-300">Email Address (for receipt)</label>
-                                            <input required type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-accent-500 dark:focus:border-accent-400 focus:ring-2 focus:ring-accent-200 dark:focus:ring-accent-800 outline-none transition-all text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500" placeholder="you@example.com" />
-                                        </div>
-                                    </div>
+                                <div className="max-w-md mx-auto space-y-8 text-center">
+                                    <p className="text-gray-600 dark:text-gray-300 mb-8">
+                                        Your contribution helps us provide essential medical services and education to those in need. Click the button below to donate securely via Paystack.
+                                    </p>
 
-                                    <button type="submit" className="w-full bg-accent-500 hover:bg-accent-600 text-white font-bold py-4 rounded-xl transition-colors shadow-lg flex items-center justify-center space-x-2 text-lg">
-                                        <CreditCard size={20} />
-                                        <span>Donate GHS {customAmount || donationAmount}</span>
-                                    </button>
-                                    
+                                    <a
+                                        href="https://paystack.shop/pay/cc8m08ql-f"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full bg-accent-500 hover:bg-accent-600 text-white font-bold py-4 rounded-xl transition-colors shadow-lg flex items-center justify-center text-lg"
+                                    >
+                                        <Heart className="mr-2" size={24} />
+                                        Make a Donation
+                                    </a>
+
                                     <p className="text-xs text-center text-gray-400">
                                         Secured by Paystack. You will be redirected to complete payment.
                                     </p>
-                                </form>
+                                </div>
                             </div>
                         )}
                     </div>

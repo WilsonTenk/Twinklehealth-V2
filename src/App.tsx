@@ -1,24 +1,27 @@
 
-import React, { useState, useEffect } from 'react';
-import { 
-  Theater, Stethoscope, HandHeart, Sprout, 
-  Shirt, Users, Shield
+import React, { useState, useEffect, Suspense } from 'react';
+import {
+    Theater, Stethoscope, HandHeart, Sprout,
+    Shirt, Users, Shield
 } from 'lucide-react';
-import { Service, BlogPost } from './types';
+import { Project, BlogPost } from './types';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import ServiceDetail from './pages/ServiceDetail';
-import Blog from './pages/Blog';
-import BlogDetail from './pages/BlogDetail';
-import GetInvolved from './pages/GetInvolved';
-import SearchResults from './pages/SearchResults';
+import LoadingSpinner from './components/LoadingSpinner';
+
+// Lazy Load Pages
+const Home = React.lazy(() => import('./pages/Home'));
+const About = React.lazy(() => import('./pages/About'));
+const Projects = React.lazy(() => import('./pages/Projects'));
+const ProjectDetail = React.lazy(() => import('./pages/ProjectDetail'));
+const Blog = React.lazy(() => import('./pages/Blog'));
+const BlogDetail = React.lazy(() => import('./pages/BlogDetail'));
+const GetInvolved = React.lazy(() => import('./pages/GetInvolved'));
+const SearchResults = React.lazy(() => import('./pages/SearchResults'));
 
 // --- Data Definitions (Shared) ---
 
-const services: Service[] = [
+const projects: Project[] = [
     {
         id: 1,
         title: "Health Education Through Drama",
@@ -33,16 +36,21 @@ const services: Service[] = [
             "Community Entry Needs Assessment"
         ],
         impactStats: [
-            { value: "50+", label: "Communities Reached" },
-            { value: "15k+", label: "Audience Members" },
+            { value: "7", label: "Communities Reached" },
+            { value: "500+", label: "Audience Members" },
             { value: "40%", label: "Increase in Health Literacy" }
+        ],
+        galleryImages: [
+            "images/PHOTO-2025-04-14-16-34-54.jpg",
+            "images/PHOTO-2025-04-14-16-34-56 (3).jpg",
+            "images/PHOTO-2025-04-14-16-34-59 (2).jpg"
         ]
     },
     {
         id: 2,
         title: "Free Medical Services",
-        description: "Includes a team of laboratory scientists, ENT specialists, and midwives operating a Child Welfare Clinic alongside general practitioners.",
-        fullDescription: "Includes a team of laboratory scientists, ENT specialists, and midwives operating a Child Welfare Clinic alongside general practitioners. We organize regular medical outreach camps in remote and underserved areas where healthcare infrastructure is lacking. Our team of volunteer doctors, nurses, and pharmacists provide general consultations, screenings for chronic conditions like hypertension and diabetes, maternal health checks, and pediatric care. We also provide free essential medications and refer complex cases to partner hospitals.",
+        description: "Includes a team of laboratory scientists, eye specialists, ENT specialists, and midwives operating a Child Welfare Clinic alongside general practitioners.",
+        fullDescription: "Includes a team of laboratory scientists, eye specialists, ENT specialists, and midwives operating a Child Welfare Clinic alongside general practitioners. We organize regular medical outreach camps in remote and underserved areas where healthcare infrastructure is lacking. Our team of volunteer doctors, nurses, and pharmacists provide general consultations, screenings for chronic conditions like hypertension and diabetes, maternal health checks, and pediatric care. We also provide free essential medications and refer complex cases to partner hospitals.",
         icon: Stethoscope,
         image: "images/PHOTO-2025-04-14-16-34-55.jpg",
         tag: "Healthcare",
@@ -55,25 +63,36 @@ const services: Service[] = [
         impactStats: [
             { value: "3,000+", label: "Treated" },
             { value: "200+", label: "Referred" }
+        ],
+        galleryImages: [
+            "images/PHOTO-2025-04-14-16-34-55.jpg",
+            "images/PHOTO-2025-04-14-16-34-57 (3).jpg",
+            "images/PHOTO-2025-04-14-16-35-01.jpg"
         ]
     },
     {
         id: 3,
         title: "Community Needs Support",
-        description: "Addressing specific local needs. Instead of large infrastructure, we focus on immediate impact: donating educational items for projects, providing wheelchairs for those with mobility issues, and supplying medications/consumables to CHPS compounds.",
-        fullDescription: "Addressing specific local needs. Instead of large infrastructure, we focus on immediate impact: donating educational items for projects, providing wheelchairs for those with mobility issues, and supplying medications/consumables to CHPS compounds. We believe in listening to the community. Our Community Needs Support initiative is a flexible fund that allows us to respond to specific, urgent requests from community leaders. By addressing these foundational needs, we create an environment where health can thrive.",
+        description: "Addressing specific local needs. We fixed a borehole for a community, donated educational items, provided wheelchairs, and supplied medications/consumables to CHPS compounds.",
+        fullDescription: "Addressing specific local needs. We fixed a borehole which was spoilt for a community, bought educational items, provided wheelchairs for those with mobility issues, and supplied medications/consumables to CHPS compounds. We believe in listening to the community. Our Community Needs Support initiative is a flexible fund that allows us to respond to specific, urgent requests from community leaders.",
         icon: HandHeart,
         image: "images/PHOTO-2025-04-14-16-34-56.jpg",
         tag: "Support",
         features: [
             "Educational Project Donations",
             "Wheelchair Donations",
-            "Medical Consumables"
+            "Medical Consumables",
+            "Borehole Repair"
         ],
         impactStats: [
-            { value: "N/A", label: "Educational Items Donated" },
-            { value: "N/A", label: "CHPS Compounds Supported" },
-            { value: "N/A", label: "Lives Touched" }
+            { value: "500+", label: "Educational Items Donated" },
+            { value: "2", label: "CHPS Compounds Supported" },
+            { value: "500+", label: "Lives Touched" }
+        ],
+        galleryImages: [
+            "images/PHOTO-2025-04-14-16-34-56.jpg",
+            "images/PHOTO-2025-04-14-16-34-54.jpg",
+            "images/PHOTO-2025-04-14-16-34-59.jpg"
         ]
     },
     {
@@ -93,6 +112,11 @@ const services: Service[] = [
         impactStats: [
             { value: "200+", label: "Trained (Male & Female)" },
             { value: "20+", label: "Businesses Started" }
+        ],
+        galleryImages: [
+            "images/PHOTO-2025-04-14-16-34-57.jpg",
+            "images/PHOTO-2025-04-14-17-02-55.jpg",
+            "images/PHOTO-2025-04-14-16-34-58.jpg"
         ]
     },
     {
@@ -111,8 +135,13 @@ const services: Service[] = [
         ],
         impactStats: [
             { value: "5000+", label: "Items Distributed" },
-            { value: "800", label: "Families Supported" },
-            { value: "12", label: "Communities Reached" }
+            { value: "8", label: "Communities Reached" },
+            { value: "800", label: "Families Supported" }
+        ],
+        galleryImages: [
+            "images/PHOTO-2025-04-14-16-34-58.jpg",
+            "images/PHOTO-2025-04-14-16-34-59 (2).jpg",
+            "images/PHOTO-2025-04-14-16-34-54.jpg"
         ]
     },
     {
@@ -133,13 +162,18 @@ const services: Service[] = [
             { value: "100+", label: "Sessions Held" },
             { value: "1500+", label: "Participants" },
             { value: "100%", label: "Community Driven" }
+        ],
+        galleryImages: [
+            "images/PHOTO-2025-04-14-16-34-59.jpg",
+            "images/PHOTO-2025-04-14-16-34-56.jpg",
+            "images/PHOTO-2025-04-14-16-35-01.jpg"
         ]
     },
     {
         id: 7,
-        title: "Prison Therapy",
-        description: "Providing therapeutic support and rehabilitation programs for inmates to support mental well-being and reintegration.",
-        fullDescription: "Providing therapeutic support and rehabilitation programs for inmates to support mental well-being and reintegration. Our Prison Therapy program focuses on addressing the mental health needs of incarcerated individuals, helping them develop coping strategies, emotional resilience, and life skills that will support successful reintegration into society upon release.",
+        title: "Prison Therapy: The Art of Healing Behind Bars",
+        description: "To enhance the health and well-being of underserved individuals by providing accessible healthcare, impactful health education, and creative psychosocial support that promotes dignity, resilience, and positive transformation.",
+        fullDescription: "THE ART OF HEALING BEHIND BARS. MISSION: To enhance the health and well-being of underserved individuals by providing accessible healthcare, impactful health education, and creative psychosocial support that promotes dignity, resilience, and positive transformation. VISION: To build healthier, empowered, and inclusive communities where every individual can thrive physically, emotionally, and socially. CORE VALUES: COMPASSION, ACCESSIBILITY, INNOVATION, INTEGRITY, COLLABORATION, DIGNITY, EMPOWERMENT. It was an engaging session.",
         icon: Shield,
         image: "images/PHOTO-2025-04-14-16-34-54.jpg",
         tag: "Healthcare",
@@ -150,9 +184,14 @@ const services: Service[] = [
             "Therapeutic Counseling"
         ],
         impactStats: [
-            { value: "N/A", label: "Inmates Supported" },
-            { value: "N/A", label: "Sessions Conducted" },
-            { value: "N/A", label: "Facilities Reached" }
+            { value: "1", label: "Prison Visited" },
+            { value: "70", label: "Inmates Participated" },
+            { value: "100%", label: "Engaging Session" }
+        ],
+        galleryImages: [
+            "images/PHOTO-2025-04-14-16-34-54.jpg",
+            "images/PHOTO-2025-04-14-16-34-55.jpg",
+            "images/PHOTO-2025-04-14-16-34-57.jpg"
         ]
     }
 ];
@@ -233,16 +272,16 @@ const blogPosts: BlogPost[] = [
 const App: React.FC = () => {
     // State now handles 'page' name, an optional 'id' for detail views, and 'query' for search
     const [viewState, setViewState] = useState<{ page: string; id?: number; query?: string }>({ page: 'Home' });
-    
+
     // Dark mode state
     const [isDarkMode, setIsDarkMode] = useState(false);
 
-    // Initialize dark mode from localStorage or system preference
+    // Initialize dark mode from localStorage
     useEffect(() => {
         const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-        
+        // Default to light mode (false) if no saved theme, ignoring system preference for now per user request
+        const shouldBeDark = savedTheme === 'dark';
+
         setIsDarkMode(shouldBeDark);
         if (shouldBeDark) {
             document.documentElement.classList.add('dark');
@@ -255,7 +294,7 @@ const App: React.FC = () => {
     const toggleTheme = () => {
         const newDarkMode = !isDarkMode;
         setIsDarkMode(newDarkMode);
-        
+
         if (newDarkMode) {
             document.documentElement.classList.add('dark');
             localStorage.setItem('theme', 'dark');
@@ -272,7 +311,7 @@ const App: React.FC = () => {
 
     // Helper to determine which Nav Item should be highlighted
     const getActiveNav = () => {
-        if (viewState.page === 'ServiceDetail') return 'Services';
+        if (viewState.page === 'ProjectDetail') return 'Projects';
         if (viewState.page === 'BlogDetail') return 'Blog';
         if (viewState.page === 'SearchResults') return '';
         return viewState.page;
@@ -282,56 +321,58 @@ const App: React.FC = () => {
     const renderContent = () => {
         switch (viewState.page) {
             case 'Home':
-                return <Home services={services} blogPosts={blogPosts} onNavigate={navigate} />;
+                return <Home projects={projects} blogPosts={blogPosts} onNavigate={navigate} />;
             case 'About':
                 return <About />;
-            case 'Services':
-                return <Services services={services} onNavigate={navigate} />;
-            case 'ServiceDetail':
-                const service = services.find(s => s.id === viewState.id);
-                return service ? (
-                    <ServiceDetail 
-                        service={service} 
-                        onBack={() => navigate('Services')} 
+            case 'Projects': // Renamed from Services
+                return <Projects projects={projects} onNavigate={navigate} />;
+            case 'ProjectDetail': // Renamed from ServiceDetail
+                const project = projects.find(s => s.id === viewState.id);
+                return project ? (
+                    <ProjectDetail
+                        project={project}
+                        onBack={() => navigate('Projects')}
                         onDonate={() => navigate('Get Involved')}
                     />
-                ) : <Services services={services} onNavigate={navigate} />;
+                ) : <Projects projects={projects} onNavigate={navigate} />;
             case 'Blog':
                 return <Blog blogPosts={blogPosts} onNavigate={navigate} />;
             case 'BlogDetail':
                 const post = blogPosts.find(p => p.id === viewState.id);
                 return post ? (
-                    <BlogDetail 
-                        post={post} 
-                        onBack={() => navigate('Blog')} 
+                    <BlogDetail
+                        post={post}
+                        onBack={() => navigate('Blog')}
                     />
                 ) : <Blog blogPosts={blogPosts} onNavigate={navigate} />;
             case 'Get Involved':
                 return <GetInvolved />;
             case 'SearchResults':
-                return <SearchResults 
-                    query={viewState.query || ''} 
-                    services={services} 
-                    blogPosts={blogPosts} 
-                    onNavigate={navigate} 
+                return <SearchResults
+                    query={viewState.query || ''}
+                    projects={projects}
+                    blogPosts={blogPosts}
+                    onNavigate={navigate}
                 />;
             default:
-                return <Home services={services} blogPosts={blogPosts} onNavigate={navigate} />;
+                return <Home projects={projects} blogPosts={blogPosts} onNavigate={navigate} />;
         }
     };
 
     return (
         <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 overflow-x-hidden flex flex-col min-h-screen transition-colors duration-300">
-            <Header 
-                currentPage={getActiveNav()} 
-                onNavigate={(page) => navigate(page)} 
+            <Header
+                currentPage={getActiveNav()}
+                onNavigate={(page) => navigate(page)}
                 onSearch={(query) => navigate('SearchResults', undefined, query)}
                 isDarkMode={isDarkMode}
                 toggleTheme={toggleTheme}
             />
-            
+
             <main className="flex-grow">
-                {renderContent()}
+                <Suspense fallback={<LoadingSpinner />}>
+                    {renderContent()}
+                </Suspense>
             </main>
 
             <Footer onNavigate={(page) => navigate(page)} />

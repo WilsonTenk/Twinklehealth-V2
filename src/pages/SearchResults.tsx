@@ -2,40 +2,40 @@
 import React from 'react';
 import { Search, ArrowLeft } from 'lucide-react';
 import SectionTitle from '../components/SectionTitle';
-import ServiceCard from '../components/ServiceCard';
+import ProjectCard from '../components/ProjectCard';
 import BlogCard from '../components/BlogCard';
-import { Service, BlogPost } from '../types';
+import { Project, BlogPost } from '../types';
 import ScrollReveal from '../components/ScrollReveal';
 
 interface SearchResultsProps {
     query: string;
-    services: Service[];
+    projects: Project[];
     blogPosts: BlogPost[];
     onNavigate: (page: string, id?: number) => void;
 }
 
-const SearchResults: React.FC<SearchResultsProps> = ({ query, services, blogPosts, onNavigate }) => {
+const SearchResults: React.FC<SearchResultsProps> = ({ query, projects, blogPosts, onNavigate }) => {
     const lowercaseQuery = query.toLowerCase();
 
-    const filteredServices = services.filter(service => 
-        service.title.toLowerCase().includes(lowercaseQuery) || 
-        service.description.toLowerCase().includes(lowercaseQuery) ||
-        service.tag.toLowerCase().includes(lowercaseQuery)
+    const filteredProjects = projects.filter(project =>
+        project.title.toLowerCase().includes(lowercaseQuery) ||
+        project.description.toLowerCase().includes(lowercaseQuery) ||
+        project.tag.toLowerCase().includes(lowercaseQuery)
     );
 
-    const filteredPosts = blogPosts.filter(post => 
-        post.title.toLowerCase().includes(lowercaseQuery) || 
+    const filteredPosts = blogPosts.filter(post =>
+        post.title.toLowerCase().includes(lowercaseQuery) ||
         post.excerpt.toLowerCase().includes(lowercaseQuery) ||
         post.category.toLowerCase().includes(lowercaseQuery)
     );
 
-    const hasResults = filteredServices.length > 0 || filteredPosts.length > 0;
+    const hasResults = filteredProjects.length > 0 || filteredPosts.length > 0;
 
     return (
         <div className="animate-fade-in min-h-[60vh]">
             <div className="bg-gray-50 py-16 border-b border-gray-200">
                 <div className="container mx-auto px-4">
-                     <button 
+                    <button
                         onClick={() => onNavigate('Home')}
                         className="text-gray-500 hover:text-primary-600 flex items-center space-x-2 mb-8 transition-colors"
                     >
@@ -55,16 +55,16 @@ const SearchResults: React.FC<SearchResultsProps> = ({ query, services, blogPost
                             <Search size={32} />
                         </div>
                         <h2 className="text-2xl font-bold text-gray-900 mb-2">No results found</h2>
-                        <p className="text-gray-600">Try adjusting your search terms or browse our services.</p>
+                        <p className="text-gray-600">Try adjusting your search terms or browse our projects.</p>
                     </div>
                 ) : (
                     <div className="space-y-16">
-                        {filteredServices.length > 0 && (
+                        {filteredProjects.length > 0 && (
                             <ScrollReveal>
-                                <SectionTitle title="Services" subtitle="Matched Services" />
+                                <SectionTitle title="Projects" subtitle="Matched Projects" />
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                    {filteredServices.map(service => (
-                                        <ServiceCard key={service.id} service={service} onNavigate={onNavigate} />
+                                    {filteredProjects.map(project => (
+                                        <ProjectCard key={project.id} project={project} onNavigate={onNavigate} />
                                     ))}
                                 </div>
                             </ScrollReveal>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface Service {
+export interface Project {
     id: number;
     title: string;
     description: string;
@@ -10,6 +10,7 @@ export interface Service {
     fullDescription?: string;
     features?: string[];
     impactStats?: { value: string; label: string }[];
+    galleryImages?: string[];
 }
 
 export interface BlogPost {

@@ -1,0 +1,15 @@
+/*
+Theme Name: Twinkle Health Foundation
+Theme URI: https://twinklehealth.org
+Author: Twinkle Health Foundation
+Description: A custom theme converted from React, using Tailwind CSS.
+Version: 1.0
+*/
+
+/* 
+   Since we are using Tailwind CDN, this file is mainly for WordPress recognition 
+   and potential custom overrides that Tailwind doesn't handle.
+*/
+body {
+    font-family: 'Inter', sans-serif;
+}
