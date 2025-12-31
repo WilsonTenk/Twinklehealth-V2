@@ -115,7 +115,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, services }) => {
                             </div>
                         </button>
                         <div className={`mt-4 lg:mt-6 space-y-3 overflow-hidden transition-all duration-300 ${openSection === 'quickLinks' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100'}`}>
-                            {['Home', 'About', 'Projects', 'Blog', 'Get Involved'].map((item) => (
+                            {['Home', 'About', 'Services', 'Blog', 'Get Involved'].map((item) => (
                                 <button
                                     key={item}
                                     onClick={() => onNavigate(item)}

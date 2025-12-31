@@ -160,7 +160,7 @@ const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
                                         </div>
                                         <span className="font-bold text-gray-900 dark:text-white">Mission Success</span>
                                     </div>
-                                    <p className="text-sm text-gray-600 dark:text-gray-300">Recent project helped 300+ community members with malaria and sugar test.</p>
+                                    <p className="text-sm text-gray-600 dark:text-gray-300">Recent service helped 300+ community members with malaria and sugar test.</p>
                                 </div>
                             </div>
                             <div className="absolute -top-10 -right-10 z-0 opacity-40">

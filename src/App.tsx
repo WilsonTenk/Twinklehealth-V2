@@ -79,7 +79,7 @@ const services: Service[] = [
         image: "images/PHOTO-2025-04-14-16-34-56.jpg",
         tag: "Support",
         features: [
-            "Educational Project Donations",
+            "Educational Service Donations",
             "Wheelchair Donations",
             "Medical Consumables",
             "Borehole Repair"
