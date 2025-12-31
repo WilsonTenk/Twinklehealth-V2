@@ -70,7 +70,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, projects }) => {
                             />
                         </div>
                         <p className="text-sm leading-relaxed text-gray-400">
-                            Transforming lives through accessible healthcare and community empowerment. We believe quality healthcare is a fundamental right.
+                            Transforming lives through accessible healthcare and community empowerment. We believe quality healthcare is a fundamental right. Building smiles, equipping lives.
                         </p>
 
                         {/* Social Icons - Modern & Touch Friendly */}

@@ -17,9 +17,9 @@ interface HomeProps {
 const testimonials: Testimonial[] = [
     {
         id: 1,
-        text: "The health education drama was transformative for our village. We finally understand how to prevent common illnesses in a way that makes sense to us.",
-        name: "Adwoa Mansa",
-        role: "Community Leader",
+        text: "I admire how they control the crowd to make things move smoothly. They promise and never fail.",
+        name: "Nana Yaw",
+        role: "Community Member",
         image: "images/PHOTO-2025-04-14-16-34-59 (2).jpg"
     },
     {
@@ -160,7 +160,7 @@ const Home: React.FC<HomeProps> = ({ projects, blogPosts, onNavigate }) => {
                                         </div>
                                         <span className="font-bold text-gray-900 dark:text-white">Mission Success</span>
                                     </div>
-                                    <p className="text-sm text-gray-600 dark:text-gray-300">Recent campaign helped 500+ children with basic vaccinations.</p>
+                                    <p className="text-sm text-gray-600 dark:text-gray-300">Recent project helped 300+ community members with malaria and sugar test.</p>
                                 </div>
                             </div>
                             <div className="absolute -top-10 -right-10 z-0 opacity-40">
@@ -198,7 +198,7 @@ const Home: React.FC<HomeProps> = ({ projects, blogPosts, onNavigate }) => {
                                 <SectionTitle
                                     subtitle="About Us"
                                     title="We are committed to your health goals!"
-                                    description="Twinkle Health Foundation is dedicated to transforming healthcare accessibility in underserved communities. We believe that quality healthcare is a fundamental right, not a privilege."
+                                    description="Twinkle Health Foundation is dedicated to equipping lives and building smiles by transforming healthcare accessibility in underserved communities. We believe that quality healthcare is a fundamental right, not a privilege."
                                 />
 
                                 <div className="bg-primary-50 dark:bg-primary-900/30 p-6 rounded-2xl border border-primary-100 dark:border-primary-800 mb-8 flex flex-col md:flex-row gap-6 items-center">

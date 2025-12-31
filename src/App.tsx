@@ -87,7 +87,8 @@ const projects: Project[] = [
         impactStats: [
             { value: "500+", label: "Educational Items Donated" },
             { value: "2", label: "CHPS Compounds Supported" },
-            { value: "500+", label: "Lives Touched" }
+            { value: "900+", label: "Lives Touched" },
+            { value: "1", label: "Wheelchair Donated" }
         ],
         galleryImages: [
             "images/PHOTO-2025-04-14-16-34-56.jpg",
@@ -110,7 +111,7 @@ const projects: Project[] = [
             "Equipment Donation"
         ],
         impactStats: [
-            { value: "200+", label: "Trained (Male & Female)" },
+            { value: "300+", label: "Trained (Male & Female)" },
             { value: "20+", label: "Businesses Started" }
         ],
         galleryImages: [
@@ -147,8 +148,8 @@ const projects: Project[] = [
     {
         id: 6,
         title: "Focus Group Discussions",
-        description: "Community engagement sessions to understand needs and gather feedback for program improvement.",
-        fullDescription: "We don't guess what communities need; we ask them. Our Focus Group Discussions bring together diverse groups—men, women, youth, elders—to discuss their health challenges and propose solutions. These insights directly shape our program design, ensuring our interventions are culturally appropriate and truly desired by the people we serve.",
+        description: "We group community members by demographic (youth, children, elderly) to seek their opinions, educate them on causes and effects, and co-create practical health solutions.",
+        fullDescription: "We don't guess what communities need; we ask them. By grouping participants—youth, children, elderly—we create safe spaces to seek their opinions on specific health topics. We listen to their views, educate them on causes and effects, and work together to suggest practical, sustainable solutions. These insights directly shape our program design, ensuring our interventions are truly desired by the people we serve.",
         icon: Users,
         image: "images/PHOTO-2025-04-14-16-34-59.jpg",
         tag: "Engagement",
@@ -171,9 +172,9 @@ const projects: Project[] = [
     },
     {
         id: 7,
-        title: "Prison Therapy: The Art of Healing Behind Bars",
-        description: "To enhance the health and well-being of underserved individuals by providing accessible healthcare, impactful health education, and creative psychosocial support that promotes dignity, resilience, and positive transformation.",
-        fullDescription: "THE ART OF HEALING BEHIND BARS. MISSION: To enhance the health and well-being of underserved individuals by providing accessible healthcare, impactful health education, and creative psychosocial support that promotes dignity, resilience, and positive transformation. VISION: To build healthier, empowered, and inclusive communities where every individual can thrive physically, emotionally, and socially. CORE VALUES: COMPASSION, ACCESSIBILITY, INNOVATION, INTEGRITY, COLLABORATION, DIGNITY, EMPOWERMENT. It was an engaging session.",
+        title: "Prison Therapy: Healing Beyond Bars",
+        description: "Unlocking hope and restoring dignity. We bring healthcare, education, and creative therapy to inmates, reminding them that they are seen, valued, and capable of a brighter future.",
+        fullDescription: "Healing knows no boundaries, not even prison walls. Our Prison Therapy initiative is more than just a visit—it's a movement to restore dignity and hope. We combine accessible healthcare and impactful health education with creative psychosocial support to uplift spirits. Through engaging sessions that promote resilience and positive transformation, we remind every individual that their well-being matters and that a new chapter is always possible.",
         icon: Shield,
         image: "images/PHOTO-2025-04-14-16-34-54.jpg",
         tag: "Healthcare",

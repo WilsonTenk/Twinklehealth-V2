@@ -42,6 +42,24 @@ const team: TeamMember[] = [
         name: "Victor Kofi Norgbedzi",
         role: "Medical Coordinator",
         image: "images/team/Victor Kofi Norgbedzi.jpeg",
+    },
+    {
+        id: 7,
+        name: "Rudolf K Akutu",
+        role: "Accountant",
+        image: "images/team/Rudolf K Akutu.jpeg",
+    },
+    {
+        id: 8,
+        name: "Lovina Delali Honu",
+        role: "Secretary",
+        image: "images/team/Lovina Delali Honu.jpeg",
+    },
+    {
+        id: 9,
+        name: "Tamakloe Jonas Worlanyo D",
+        role: "Welfare Lead",
+        image: "images/team/Tamakloe Jonas Worlanyo D.jpeg",
     }
 ];
 
@@ -55,7 +73,7 @@ const About: React.FC = () => {
                 </div>
                 <div className="container mx-auto px-4 relative z-10">
                     <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">About Us</h1>
-                    <p className="text-xl text-primary-100 max-w-2xl mx-auto">Discover our story, our mission, and the people behind the movement.</p>
+                    <p className="text-xl text-primary-100 max-w-2xl mx-auto">Discover our story, our mission and the people behind building smiles and equipping lives</p>
                 </div>
             </div>
 
@@ -117,7 +135,7 @@ const About: React.FC = () => {
                             </div>
                             <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-4">Healing Through Arts</h3>
                             <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                                Before the geography things, healing can come in the form of arts and drama. Health education can go beyond talks; we use drama and arts as innovative tools to educate communities on their health needs.
+                                healing can come in the form of arts and drama. Health education can go beyond talks; we use drama and arts as innovative tools to educate communities on their health needs.
                             </p>
                         </div>
                     </div>
