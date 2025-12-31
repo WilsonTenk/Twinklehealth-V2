@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Heart, Check, Phone, ArrowRight, Quote, HelpCircle, ChevronDown } from 'lucide-react';
 import SectionTitle from '../components/SectionTitle';
-import ProjectCard from '../components/ProjectCard';
+import ServiceCard from '../components/ServiceCard';
 import BlogCard from '../components/BlogCard';
 import ScrollReveal from '../components/ScrollReveal';
-import { Project, BlogPost, Testimonial, FaqItem } from '../types';
+import { Service, BlogPost, Testimonial, FaqItem } from '../types';
 import DonationButton from '../components/DonationButton';
 import CountUp from '../components/CountUp';
 
 interface HomeProps {
-    projects: Project[];
+    services: Service[];
     blogPosts: BlogPost[];
     onNavigate: (page: string, id?: number) => void;
 }
@@ -88,7 +88,7 @@ const AccordionItem: React.FC<{ item: FaqItem; isOpen: boolean; onToggle: () => 
     );
 };
 
-const Home: React.FC<HomeProps> = ({ projects, blogPosts, onNavigate }) => {
+const Home: React.FC<HomeProps> = ({ services, blogPosts, onNavigate }) => {
     const [openFaqId, setOpenFaqId] = useState<number | null>(1);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -250,29 +250,29 @@ const Home: React.FC<HomeProps> = ({ projects, blogPosts, onNavigate }) => {
                 </section>
             </ScrollReveal>
 
-            {/* Projects (formerly Services) Section Summary */}
+            {/* Services (formerly Services) Section Summary */}
             <section className="py-24 bg-gray-50 dark:bg-gray-800">
                 <div className="container mx-auto px-4">
                     <ScrollReveal>
                         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                             <div className="max-w-2xl">
                                 <SectionTitle
-                                    subtitle="Our Projects"
-                                    title="Projects We Implement!"
+                                    subtitle="Our Services"
+                                    title="Services We Implement!"
                                 />
                             </div>
                             <div className="flex items-center space-x-4">
-                                <button onClick={() => onNavigate('Projects')} className="text-primary-600 font-bold flex items-center hover:underline">
-                                    View All Projects <ArrowRight size={16} className="ml-2" />
+                                <button onClick={() => onNavigate('Services')} className="text-primary-600 font-bold flex items-center hover:underline">
+                                    View All Services <ArrowRight size={16} className="ml-2" />
                                 </button>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {projects.slice(0, 3).map((project, i) => (
-                                <div key={project.id} className="h-full">
+                            {services.slice(0, 3).map((service, i) => (
+                                <div key={service.id} className="h-full">
                                     <ScrollReveal delay={i * 100}>
-                                        <ProjectCard project={project} onNavigate={onNavigate} />
+                                        <ServiceCard service={service} onNavigate={onNavigate} />
                                     </ScrollReveal>
                                 </div>
                             ))}

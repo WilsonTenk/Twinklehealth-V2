@@ -2,25 +2,25 @@
 import React from 'react';
 import { Search, ArrowLeft } from 'lucide-react';
 import SectionTitle from '../components/SectionTitle';
-import ProjectCard from '../components/ProjectCard';
+import ServiceCard from '../components/ServiceCard';
 import BlogCard from '../components/BlogCard';
-import { Project, BlogPost } from '../types';
+import { Service, BlogPost } from '../types';
 import ScrollReveal from '../components/ScrollReveal';
 
 interface SearchResultsProps {
     query: string;
-    projects: Project[];
+    services: Service[];
     blogPosts: BlogPost[];
     onNavigate: (page: string, id?: number) => void;
 }
 
-const SearchResults: React.FC<SearchResultsProps> = ({ query, projects, blogPosts, onNavigate }) => {
+const SearchResults: React.FC<SearchResultsProps> = ({ query, services, blogPosts, onNavigate }) => {
     const lowercaseQuery = query.toLowerCase();
 
-    const filteredProjects = projects.filter(project =>
-        project.title.toLowerCase().includes(lowercaseQuery) ||
-        project.description.toLowerCase().includes(lowercaseQuery) ||
-        project.tag.toLowerCase().includes(lowercaseQuery)
+    const filteredServices = services.filter(service =>
+        service.title.toLowerCase().includes(lowercaseQuery) ||
+        service.description.toLowerCase().includes(lowercaseQuery) ||
+        service.tag.toLowerCase().includes(lowercaseQuery)
     );
 
     const filteredPosts = blogPosts.filter(post =>
@@ -29,7 +29,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ query, projects, blogPost
         post.category.toLowerCase().includes(lowercaseQuery)
     );
 
-    const hasResults = filteredProjects.length > 0 || filteredPosts.length > 0;
+    const hasResults = filteredServices.length > 0 || filteredPosts.length > 0;
 
     return (
         <div className="animate-fade-in min-h-[60vh]">
@@ -55,16 +55,16 @@ const SearchResults: React.FC<SearchResultsProps> = ({ query, projects, blogPost
                             <Search size={32} />
                         </div>
                         <h2 className="text-2xl font-bold text-gray-900 mb-2">No results found</h2>
-                        <p className="text-gray-600">Try adjusting your search terms or browse our projects.</p>
+                        <p className="text-gray-600">Try adjusting your search terms or browse our services.</p>
                     </div>
                 ) : (
                     <div className="space-y-16">
-                        {filteredProjects.length > 0 && (
+                        {filteredServices.length > 0 && (
                             <ScrollReveal>
-                                <SectionTitle title="Projects" subtitle="Matched Projects" />
+                                <SectionTitle title="Services" subtitle="Matched Services" />
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                    {filteredProjects.map(project => (
-                                        <ProjectCard key={project.id} project={project} onNavigate={onNavigate} />
+                                    {filteredServices.map(service => (
+                                        <ServiceCard key={service.id} service={service} onNavigate={onNavigate} />
                                     ))}
                                 </div>
                             </ScrollReveal>

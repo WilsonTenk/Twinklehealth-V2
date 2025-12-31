@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight, Mail, Phone, Linkedin, ChevronDown, ChevronUp } from 'lucide-react';
-import { Project } from '../types';
+import { Service } from '../types';
 
 interface FooterProps {
     onNavigate: (page: string) => void;
-    projects: Project[];
+    services: Service[];
 }
 
-const Footer: React.FC<FooterProps> = ({ onNavigate, projects }) => {
+const Footer: React.FC<FooterProps> = ({ onNavigate, services }) => {
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
@@ -127,26 +127,26 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, projects }) => {
                         </div>
                     </div>
 
-                    {/* Projects - Accordion on Mobile */}
+                    {/* Services - Accordion on Mobile */}
                     <div className="lg:col-span-1 border-b border-gray-900 lg:border-none pb-6 lg:pb-0">
                         <button
                             className="w-full flex justify-between items-center lg:cursor-default"
-                            onClick={() => toggleSection('projects')}
+                            onClick={() => toggleSection('services')}
                         >
-                            <h3 className="text-white font-bold text-lg">Our Projects</h3>
+                            <h3 className="text-white font-bold text-lg">Our Services</h3>
                             <div className="lg:hidden text-gray-500">
-                                {openSection === 'projects' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                                {openSection === 'services' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                             </div>
                         </button>
-                        <div className={`mt-4 lg:mt-6 space-y-3 overflow-hidden transition-all duration-300 ${openSection === 'projects' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100'}`}>
-                            {projects.slice(0, 4).map((project) => (
+                        <div className={`mt-4 lg:mt-6 space-y-3 overflow-hidden transition-all duration-300 ${openSection === 'services' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100'}`}>
+                            {services.slice(0, 4).map((service) => (
                                 <button
-                                    key={project.id}
-                                    onClick={() => onNavigate('Projects')}
+                                    key={service.id}
+                                    onClick={() => onNavigate('Services')}
                                     className="block w-full text-left hover:text-primary-400 text-gray-400 transition-colors text-sm py-1"
-                                    title={project.title}
+                                    title={service.title}
                                 >
-                                    {truncate(project.title, 25)}
+                                    {truncate(service.title, 25)}
                                 </button>
                             ))}
                         </div>

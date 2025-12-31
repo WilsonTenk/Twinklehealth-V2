@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface Project {
+export interface Service {
     id: number;
     title: string;
     description: string;

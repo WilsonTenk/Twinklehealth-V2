@@ -4,7 +4,7 @@ import {
     Theater, Stethoscope, HandHeart, Sprout,
     Shirt, Users, Shield
 } from 'lucide-react';
-import { Project, BlogPost } from './types';
+import { Service, BlogPost } from './types';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -12,8 +12,8 @@ import LoadingSpinner from './components/LoadingSpinner';
 // Lazy Load Pages
 const Home = React.lazy(() => import('./pages/Home'));
 const About = React.lazy(() => import('./pages/About'));
-const Projects = React.lazy(() => import('./pages/Projects'));
-const ProjectDetail = React.lazy(() => import('./pages/ProjectDetail'));
+const Services = React.lazy(() => import('./pages/Services'));
+const ServiceDetail = React.lazy(() => import('./pages/ServiceDetail'));
 const Blog = React.lazy(() => import('./pages/Blog'));
 const BlogDetail = React.lazy(() => import('./pages/BlogDetail'));
 const GetInvolved = React.lazy(() => import('./pages/GetInvolved'));
@@ -21,7 +21,7 @@ const SearchResults = React.lazy(() => import('./pages/SearchResults'));
 
 // --- Data Definitions (Shared) ---
 
-const projects: Project[] = [
+const services: Service[] = [
     {
         id: 1,
         title: "Health Education Through Drama",
@@ -312,7 +312,7 @@ const App: React.FC = () => {
 
     // Helper to determine which Nav Item should be highlighted
     const getActiveNav = () => {
-        if (viewState.page === 'ProjectDetail') return 'Projects';
+        if (viewState.page === 'ServiceDetail') return 'Services';
         if (viewState.page === 'BlogDetail') return 'Blog';
         if (viewState.page === 'SearchResults') return '';
         return viewState.page;
@@ -322,20 +322,20 @@ const App: React.FC = () => {
     const renderContent = () => {
         switch (viewState.page) {
             case 'Home':
-                return <Home projects={projects} blogPosts={blogPosts} onNavigate={navigate} />;
+                return <Home services={services} blogPosts={blogPosts} onNavigate={navigate} />;
             case 'About':
                 return <About />;
-            case 'Projects': // Renamed from Services
-                return <Projects projects={projects} onNavigate={navigate} />;
-            case 'ProjectDetail': // Renamed from ServiceDetail
-                const project = projects.find(s => s.id === viewState.id);
-                return project ? (
-                    <ProjectDetail
-                        project={project}
-                        onBack={() => navigate('Projects')}
+            case 'Services': // Renamed from Projects
+                return <Services services={services} onNavigate={navigate} />;
+            case 'ServiceDetail': // Renamed from ProjectDetail
+                const service = services.find(s => s.id === viewState.id);
+                return service ? (
+                    <ServiceDetail
+                        service={service}
+                        onBack={() => navigate('Services')}
                         onDonate={() => navigate('Get Involved')}
                     />
-                ) : <Projects projects={projects} onNavigate={navigate} />;
+                ) : <Services services={services} onNavigate={navigate} />;
             case 'Blog':
                 return <Blog blogPosts={blogPosts} onNavigate={navigate} />;
             case 'BlogDetail':
@@ -351,12 +351,12 @@ const App: React.FC = () => {
             case 'SearchResults':
                 return <SearchResults
                     query={viewState.query || ''}
-                    projects={projects}
+                    services={services}
                     blogPosts={blogPosts}
                     onNavigate={navigate}
                 />;
             default:
-                return <Home projects={projects} blogPosts={blogPosts} onNavigate={navigate} />;
+                return <Home services={services} blogPosts={blogPosts} onNavigate={navigate} />;
         }
     };
 
@@ -376,7 +376,7 @@ const App: React.FC = () => {
                 </Suspense>
             </main>
 
-            <Footer onNavigate={(page) => navigate(page)} projects={projects} />
+            <Footer onNavigate={(page) => navigate(page)} services={services} />
         </div>
     );
 };

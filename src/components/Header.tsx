@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, onSearch, isDa
         }
     }, [isSearchOpen]);
 
-    const navItems = ['Home', 'About', 'Projects', 'Blog', 'Get Involved'];
+    const navItems = ['Home', 'About', 'Services', 'Blog', 'Get Involved'];
 
     const handleNavClick = (item: string) => {
         onNavigate(item);

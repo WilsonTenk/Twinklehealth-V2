@@ -1,15 +1,15 @@
 
 import React from 'react';
 import SectionTitle from '../components/SectionTitle';
-import ProjectCard from '../components/ProjectCard';
-import { Project } from '../types';
+import ServiceCard from '../components/ServiceCard';
+import { Service } from '../types';
 
-interface ProjectsPageProps {
-    projects: Project[];
+interface ServicesPageProps {
+    services: Service[];
     onNavigate?: (page: string, id?: number) => void;
 }
 
-const Projects: React.FC<ProjectsPageProps> = ({ projects, onNavigate }) => {
+const Services: React.FC<ServicesPageProps> = ({ services, onNavigate }) => {
     return (
         <div className="animate-fade-in">
             <div className="bg-primary-900 py-24 text-center relative overflow-hidden">
@@ -17,7 +17,7 @@ const Projects: React.FC<ProjectsPageProps> = ({ projects, onNavigate }) => {
                     <img src="images/PHOTO-2025-04-14-16-34-56 (3).jpg" alt="Header BG" className="w-full h-full object-cover" />
                 </div>
                 <div className="container mx-auto px-4 relative z-10">
-                    <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">Our Projects</h1>
+                    <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">Our Services</h1>
                     <p className="text-xl text-primary-100 max-w-2xl mx-auto">Comprehensive care and support designed to uplift communities from the ground up.</p>
                 </div>
             </div>
@@ -27,16 +27,16 @@ const Projects: React.FC<ProjectsPageProps> = ({ projects, onNavigate }) => {
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <SectionTitle
                             subtitle="What We Do"
-                            title="Holistic Community Development"
-                            description="Our projects range from direct medical intervention to long-term economic empowerment. Click on any project to learn more about how we make a difference."
+                            title="Holistic Community Services"
+                            description="Our services range from direct medical intervention to long-term economic empowerment. Click on any service to learn more about how we make a difference."
                             alignment="center"
                         />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {projects.map((project) => (
-                            <div key={project.id}>
-                                <ProjectCard project={project} onNavigate={onNavigate!} />
+                        {services.map((service) => (
+                            <div key={service.id}>
+                                <ServiceCard service={service} onNavigate={onNavigate!} />
                             </div>
                         ))}
                     </div>
@@ -46,4 +46,4 @@ const Projects: React.FC<ProjectsPageProps> = ({ projects, onNavigate }) => {
     );
 };
 
-export default Projects;
+export default Services;
