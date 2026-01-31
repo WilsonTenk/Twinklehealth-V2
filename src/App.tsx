@@ -102,7 +102,7 @@ const services: Service[] = [
         description: "Empowering both men and women. We provide training in bead making and soap making. We also donate equipment (like sewing machines) and provide literacy on sustainable financial management.",
         fullDescription: "Empowering both men and women. We provide training in bead making and soap making. We also donate equipment (like sewing machines) and provide literacy on sustainable financial management. Poverty is a major determinant of health. Our Livelihood Empowerment program focuses on equipping women and youth with vocational skills such as soap making and bead work. We also provide financial literacy training to help them start small businesses, ensuring they can afford nutritious food and healthcare for their families.",
         icon: Sprout,
-        image: "images/PHOTO-2025-04-14-16-34-57.jpg",
+        image: "images/livelihood/WhatsApp Image 2026-01-26 at 13.02.05.jpeg",
         tag: "Empowerment",
         features: [
             "Bead & Soap Making",
@@ -115,9 +115,12 @@ const services: Service[] = [
             { value: "20+", label: "Businesses Started" }
         ],
         galleryImages: [
-            "images/PHOTO-2025-04-14-16-34-57.jpg",
-            "images/PHOTO-2025-04-14-17-02-55.jpg",
-            "images/PHOTO-2025-04-14-16-34-58.jpg"
+            "images/livelihood/WhatsApp Image 2026-01-26 at 13.02.05.jpeg",
+            "images/livelihood/WhatsApp Image 2026-01-26 at 13.02.06.jpeg",
+            "images/livelihood/WhatsApp Image 2026-01-26 at 13.02.07.jpeg",
+            "images/livelihood/WhatsApp Image 2026-01-26 at 13.02.08.jpeg",
+            "images/livelihood/WhatsApp Image 2026-01-26 at 13.02.10.jpeg",
+            "images/livelihood/WhatsApp Image 2026-01-26 at 13.02.13.jpeg"
         ]
     },
     {
@@ -305,9 +308,13 @@ const App: React.FC = () => {
         }
     };
 
+    // Scroll to top whenever page changes
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [viewState.page, viewState.id]);
+
     const navigate = (page: string, id?: number, query?: string) => {
         setViewState({ page, id, query });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     // Helper to determine which Nav Item should be highlighted

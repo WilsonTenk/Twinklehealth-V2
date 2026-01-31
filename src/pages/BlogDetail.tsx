@@ -76,16 +76,16 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ post, onBack }) => {
             {/* Content */}
             <div className="container mx-auto px-4 max-w-3xl">
                 <article className="prose prose-lg prose-primary max-w-none">
-                    <p className="lead text-xl text-gray-600 mb-8 font-medium border-l-4 border-accent-500 pl-6 italic">
+                    <p className="lead text-xl text-gray-600 dark:text-gray-300 mb-8 font-medium border-l-4 border-accent-500 pl-6 italic">
                         {post.excerpt}
                     </p>
 
                     {post.content ? (
-                        <div className="space-y-6 text-gray-800">
+                        <div className="space-y-6 text-gray-700 dark:text-gray-300">
                             {post.content}
                         </div>
                     ) : (
-                        <div className="space-y-6 text-gray-800">
+                        <div className="space-y-6 text-gray-700 dark:text-gray-300">
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowLeft, CheckCircle, Heart, BarChart3, Image as ImageIcon } from 'lucide-react';
 import { Service } from '../types';
+import ImageCarousel from '../components/ImageCarousel';
 
 interface ServiceDetailProps {
     service: Service;
@@ -42,7 +43,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onBack, onDonate
                     <div className="lg:col-span-2">
                         <div className="prose prose-lg text-gray-600 dark:text-gray-300 max-w-none">
                             <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-6">Overview</h3>
-                            <p className="leading-relaxed mb-8 text-lg">
+                            <p className="leading-relaxed mb-8 text-lg text-gray-700 dark:text-gray-300">
                                 {service.fullDescription || service.description}
                             </p>
 
@@ -68,26 +69,15 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onBack, onDonate
                                     <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                                         <ImageIcon className="mr-3 text-primary-600 dark:text-primary-400" /> Service Gallery
                                     </h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                        {service.galleryImages.map((img, idx) => (
-                                            <div key={idx} className="relative group overflow-hidden rounded-xl h-48 border border-gray-100 dark:border-gray-800 shadow-sm cursor-pointer">
-                                                <img
-                                                    src={img}
-                                                    alt={`Gallery ${idx + 1}`}
-                                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                                                />
-                                                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300"></div>
-                                            </div>
-                                        ))}
-                                    </div>
+                                    <ImageCarousel images={service.galleryImages} altPrefix={service.title} />
                                 </div>
                             )}
 
                             <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-4">Our Approach</h3>
-                            <p className="mb-6">
+                            <p className="mb-6 text-gray-700 dark:text-gray-300">
                                 At Twinkle Health Foundation, we don't just apply a band-aid solution. We work closely with local leaders to ensure that this program is sustainable. By integrating local knowledge with modern expertise, {service.title} continues to grow and adapt to the changing needs of the community.
                             </p>
-                            <p>
+                            <p className="text-gray-700 dark:text-gray-300">
                                 Through this initiative, we have seen a measurable decrease in related health issues and an increase in overall community well-being.
                             </p>
                         </div>
